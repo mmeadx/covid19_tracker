@@ -1,2 +1,3 @@
-# covid19_tracker
-Covid 19 Tracker 
+# Covid-19 Daily Tracker
+
+Updates daily from https://covidtracking.com/data/api
