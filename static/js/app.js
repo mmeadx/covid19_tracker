@@ -6,11 +6,20 @@ var current = "/v1/states/current.json"
 var state = "mn"
 var stateDaily = `/v1/states/${state}/daily.json`
 
+// CHARTS FUNCITON
+function charts() {
+
+};
+
+
+
+// INITIALIZE FUNCTION
 function init() {
 
     var current = "/v1/states/current.json"
     var select = d3.select("#selDataset");
 
+    // Set up StateID array
     var stateID= []
 
     // Loops through States to get data
@@ -22,9 +31,12 @@ function init() {
            stateID.push(statecode);
 
         }
+
+        // Print in Console to be sure we're getting data
         console.log("States Added to Dropdown: ");
         console.log(stateID);
 
+        // Loop through stateID and append an option to the dropdown
         stateID.forEach((state) => {
             select.append("option").text(state).property("value", state);
         });
