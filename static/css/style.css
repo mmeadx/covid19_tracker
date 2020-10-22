@@ -1,0 +1,102 @@
+/* ---------- INDEX ---------- */
+
+/* Classes */
+
+.header-row {
+    padding-top: 10px;
+    text-align: center;
+}
+
+/* ---------- OVERVIEW ----------*/
+
+/* Classes */
+.list-header {
+    text-align: center;
+    color: #333333;
+    font-weight: lighter;
+}
+
+#title-resource {
+    text-align: center;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+/* ---------- TEAM TAGS ---------- */
+
+/* Classes */
+.rounded-circle {
+    width: 200px;
+    height: 200px;
+}
+
+/* IDs */
+#bio {
+    text-align: center;
+    padding: 20px;
+}
+
+#bio-name {
+    font-weight: lighter;
+    padding: 10px;
+}
+
+#bio-info {
+    font-weight: lighter;
+}
+
+/* --------- NAVBAR ---------  */
+ 
+/* IDs */
+
+#left-padding {
+    padding-left: 50px;
+}
+
+/* ---------- GENERAL ---------- */
+
+/* Classes */
+
+.text-center {
+    text-align: center;
+}
+
+.thin-text {
+    font-weight: lighter;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.space {
+    padding: 30px;
+}
+
+.body {
+    height: 97%;
+}
+
+.svgcal {
+    height: 2500;
+    width: 300;
+    width: 98%;
+    
+}
+
+/* PLACEHOLDER CSS */
+
+#placeholder {
+    height: 300px;
+    background: grey;
+    border-style: solid;
+    border-color: white;
+}
+
+/* .chart {
+    background: #fff;
+    margin: 5px;
+  } */
+
+
+ 
