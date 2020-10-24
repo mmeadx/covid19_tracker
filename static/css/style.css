@@ -84,13 +84,26 @@
     
 }
 
+.center {
+    padding: 15px;
+}
+
+.right {
+    text-align: right;
+}
+
+.down {
+    padding-top: 30px;
+}
+
+.less {
+    padding-top: 25px;
+}
+
 /* PLACEHOLDER CSS */
 
-#placeholder {
-    height: 300px;
-    background: grey;
-    border-style: solid;
-    border-color: white;
+.neg-padding {
+    padding: -50px;
 }
 
 /* .chart {
