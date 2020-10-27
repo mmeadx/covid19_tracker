@@ -1,25 +1,26 @@
+// Load Statement
 console.log("Loaded app-statecharts.js")
 
-
+// URL BUILD FOR COVID TRACKING API
 const url = "https://api.covidtracking.com";
 const current = "/v1/states/current.json"
 
-// EVENT HANDLER - install handler to grab dataset values
 
+// EVENT HANDLER - install handler to grab dataset values
 d3.selectAll("body").on("change", updateAll);
 
 function updateAll() {
     var dropdownMenu = d3.select("#selDataset");
 
-
     var dataset = dropdownMenu.node().value;
 
-    console.log("States Selected:")
-    console.log(dataset); // Will run when new dropdown item is selected
+    console.log(`State Selected: ${dataset}`); // Will run when new dropdown item is selected
     
+    // Clear Data Quality After Click
     var clearTable = d3.select("#dataquality");
     clearTable.html("");
 
+    // Run these functions every time new dropdown is selected
     buildPlots(dataset);
     numbers(dataset);
 
@@ -27,103 +28,120 @@ function updateAll() {
 
 
 function buildPlots(info){
-    console.log("buildPlots FUNCTION RUNNING");
-    console.log("Dropdown 1:")
-    console.log(info);
+    console.log("")
+    console.log(`'buildPlots' function running on ${info}`);
     
 
     d3.json("https://api.covidtracking.com/v1/states/daily.json").then((meta) => {
 
-        console.log(`buildPlots on ${info}`);
 
+        // Used to get full name of state + FIPS code
+        d3.csv("/static/csv/states.csv").then((states) => {
+            var stateFull = states.filter(x => x.state_abbr === info);
+            console.log(parseInt(stateFull[0].population));
 
-        // Grab selected Dataset from samples using Subject ID No. from dropdown
-        var selectedData = meta.filter(x => x.state === info);
-        console.log(selectedData); // Test to be sure we're getting the right value
+            // Grab selected Dataset from samples using Subject ID No. from dropdown
+            var selectedData = meta.filter(x => x.state === info);
+            console.log("")
+            console.log(`Data for ${info}`);
+            console.log(selectedData); 
         
-        // console.log(selectedData[0])
 
         // ----- BAR CHART -----
      
-        var pos_line = {
-            x: selectedData.map(x => x.dateChecked),
-            y: selectedData.map(x => x.positiveIncrease),
-            name: "Daily Positive Cases",
-            type: "line",
-            marker: {
-                color: "#FFA85C"
-            }
-        };
+            var pos_line = {
+                x: selectedData.map(x => x.dateChecked),
+                y: selectedData.map(x => x.positiveIncrease),
+                name: "Daily Positive Cases",
+                type: "line",
+                marker: {
+                    color: "#FFA85C"
+                }
+            };
 
-        var death_line = {
-            x: selectedData.map(x => x.dateChecked),
-            y: selectedData.map(x => x.death),
-            name: "Death",
-            type: "line",
-            marker: {
-                color: "#d93b0f"
-            }
-        };
+            var death_line = {
+                x: selectedData.map(x => x.dateChecked),
+                y: selectedData.map(x => x.death),
+                name: "Death",
+                type: "line",
+                marker: {
+                    color: "#d93b0f"
+                }
+            };
 
-        var hosp_line = {
-            x: selectedData.map(x => x.dateChecked),
-            y: selectedData.map(x => x.hospitalizedCurrently),
-            name: "Hospitalized",
-            type: "line",
-            marker: {
-                color: "#002f75"
-            }
-        };
+            var hosp_line = {
+                x: selectedData.map(x => x.dateChecked),
+                y: selectedData.map(x => x.hospitalizedCurrently),
+                name: "Hospitalized",
+                type: "line",
+                marker: {
+                    color: "#002f75"
+                }
+            };
 
-        var icu_line = {
-            x: selectedData.map(x => x.dateChecked),
-            y: selectedData.map(x => x.inIcuCurrently),
-            name: "In ICU",
-            type: "line",
-            marker: {
-                color: "#13a808"
-            }
-        };
+            var icu_line = {
+                x: selectedData.map(x => x.dateChecked),
+                y: selectedData.map(x => x.inIcuCurrently),
+                name: "In ICU",
+                type: "line",
+                marker: {
+                    color: "#13a808"
+                }
+            };
 
-        var vent_line = {
-            x: selectedData.map(x => x.dateChecked),
-            y: selectedData.map(x => x.onVentilatorCurrently),
-            name: "On Ventilator",
-            type: "line",
-            marker: {
-                color: "#824ecf"
-            }
-        };
+            var vent_line = {
+                x: selectedData.map(x => x.dateChecked),
+                y: selectedData.map(x => x.onVentilatorCurrently),
+                name: "On Ventilator",
+                type: "line",
+                marker: {
+                    color: "#824ecf"
+                }
+            };
 
-        var barData = [pos_line, death_line, hosp_line, icu_line, vent_line];
+            var barData = [pos_line, death_line, hosp_line, icu_line, vent_line];
 
-        var barLayout = {
-            title: `COVID 19 Numbers for ${selectedData[0].state}`,
-            margin: {
-                l: 100,
-                r: 100,
-                t: 100,
-                b: 100
-              }
-        };
+            var barLayout = {
+                title: `COVID 19 Numbers for ${stateFull[0].state}`,
+                margin: {
+                    l: 100,
+                    r: 100,
+                    t: 100,
+                    b: 100
+                }
+            };
 
-        Plotly.newPlot("bar", barData, barLayout);
-
-    })
+            Plotly.newPlot("bar", barData, barLayout);
+        });
+    });
 };
 
 function numbers(dataset) {
-
+    console.log("");
     console.log(`Numbers function running on ${dataset}`)
     
     d3.json("https://api.covidtracking.com/v1/states/daily.json").then((data) => {
 
-        var selectedData = data.filter(x => x.state === dataset);
 
-        var quality = d3.select("#dataquality")
-            .append("h6")
-            .html(`${selectedData[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+        // CSV of States with Abbr and FIPS
+        d3.csv("/static/csv/states.csv").then((states) => {
+            var stateFull = states.filter(x => x.state_abbr === dataset)
+
+            // console.log(stateFull); // Test to see if Full State Name is given
         
+            var selectedData = data.filter(x => x.state === dataset);
+
+            var quality = d3.select("#dataquality")
+                .append("h6")
+                .html(`${stateFull[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+            var quality = d3.select("#dataquality")
+                .append("h6")
+                .html(`${selectedData[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+
+            var quality = d3.select("#dataquality")
+                .append("h6")
+                .html(`${selectedData[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+        });
     })
 }
 
