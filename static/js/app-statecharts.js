@@ -45,22 +45,16 @@ function buildPlots(info){
             var selectedData = meta.filter(x => x.state === info);
             console.log("")
             console.log(`Data for ${info}`);
-            console.log("Normalized:")
-            var statePop = (selectedData[0].positiveIncrease)/(parseInt(stateFull[0].population)/100000); 
+            var statePop = parseInt(stateFull[0].population); 
+            console.log(`Population ${statePop}`);
             
-            
-            // // Put increase in list to grab later
-            // for (var i = 0; i < selectedData.length; i++) {
-            //     // STATE CODE FOR DROPDOWN 
-            //     posIncrease = selectedData[i].positiveIncrease;
-            //     posIncr.push(posIncrease);
 
         // ----- BAR CHART -----
      
             var pos_line = {
                 x: selectedData.map(x => x.dateChecked),
                 y: selectedData.map(x => x.positiveIncrease),
-                name: "Daily Positive Cases per 100k",
+                name: "Daily Positive Cases",
                 type: "line",
                 marker: {
                     color: "#FFA85C"
