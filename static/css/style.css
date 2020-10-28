@@ -106,6 +106,10 @@
     padding: -50px;
 }
 
+.grade {
+    font-size: 150px;
+}
+
 /* .chart {
     background: #fff;
     margin: 5px;

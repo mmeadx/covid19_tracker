@@ -16,9 +16,11 @@ function updateAll() {
 
     console.log(`State Selected: ${dataset}`); // Will run when new dropdown item is selected
     
-    // Clear Data Quality After Click
-    var clearTable = d3.select("#dataquality");
+    // Clear Data After Click
+    var clearTable = d3.select("#dataQuality");
     clearTable.html("");
+    var clearGrade = d3.select("#dataGrade");
+    clearGrade.html("");
 
     // Run these functions every time new dropdown is selected
     buildPlots(dataset);
@@ -38,21 +40,27 @@ function buildPlots(info){
         // Used to get full name of state + FIPS code
         d3.csv("/static/csv/states.csv").then((states) => {
             var stateFull = states.filter(x => x.state_abbr === info);
-            console.log(parseInt(stateFull[0].population));
 
             // Grab selected Dataset from samples using Subject ID No. from dropdown
             var selectedData = meta.filter(x => x.state === info);
             console.log("")
             console.log(`Data for ${info}`);
-            console.log(selectedData); 
-        
+            console.log("Normalized:")
+            var statePop = (selectedData[0].positiveIncrease)/(parseInt(stateFull[0].population)/100000); 
+            
+            
+            // // Put increase in list to grab later
+            // for (var i = 0; i < selectedData.length; i++) {
+            //     // STATE CODE FOR DROPDOWN 
+            //     posIncrease = selectedData[i].positiveIncrease;
+            //     posIncr.push(posIncrease);
 
         // ----- BAR CHART -----
      
             var pos_line = {
                 x: selectedData.map(x => x.dateChecked),
                 y: selectedData.map(x => x.positiveIncrease),
-                name: "Daily Positive Cases",
+                name: "Daily Positive Cases per 100k",
                 type: "line",
                 marker: {
                     color: "#FFA85C"
@@ -131,16 +139,19 @@ function numbers(dataset) {
         
             var selectedData = data.filter(x => x.state === dataset);
 
-            var quality = d3.select("#dataquality")
+            var quality = d3.select("#dataQuality")
                 .append("h6")
-                .html(`${stateFull[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
-            var quality = d3.select("#dataquality")
-                .append("h6")
-                .html(`${selectedData[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+                .classed("text-center", true)
+                .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
+            
+            var dataGrade = d3.select("#dataGrade")
+                .append("h1")
+                .classed("text-center grade", true)
+                .html(`${selectedData[0].dataQualityGrade}`);
 
-            var quality = d3.select("#dataquality")
-                .append("h6")
-                .html(`${selectedData[0].state} DATA QUALITY GRADE: ${selectedData[0].dataQualityGrade}`);
+                // selectedData[0].dataQualityGrade
+            
+            
         });
     })
 }
