@@ -57,8 +57,8 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .attr("x", -5)
         .attr("y", 10)
         .attr("text-anchor", "end")
-        .attr("font-size", 16)
-        .attr("font-weight", 550)
+        .attr("font-size", 12)
+        .attr("font-weight", "lighter")
         .attr("transform", "rotate(270)")
         .text(d => d.key);
 
@@ -91,7 +91,8 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .attr("x", 40)
         .attr("y", d => (countDay(d) + .5) * cellSize)
         .attr("dy", "0.31em")
-        .attr("font-size", 12)
+        .attr("font-size", 10) // added
+        .attr("font-weight", "lighter") // added
         .text(formatDay);
 
         year
@@ -155,35 +156,6 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
             .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
         }
 
-        // legend
-        // .selectAll("rect")
-        // .data(categories)
-        // .enter()
-        // .append("rect")
-        // .attr("fill", d => d.color)
-        // .attr("x", (d, i) => legendWidth * i)
-        // .attr("width", legendWidth)
-        // .attr("height", 15)
-        // .on("click", toggle);
-
-        // legend
-        // .selectAll("text")
-        // .data(categories)
-        // .join("text")
-        // .attr("transform", "rotate(90)")
-        // .attr("y", (d, i) => -legendWidth * i)
-        // .attr("dy", -30)
-        // .attr("x", 18)
-        // .attr("text-anchor", "start")
-        // .attr("font-size", 11)
-        // .text(d => `${d.lowerBound.toFixed(2)} - ${d.upperBound.toFixed(2)}`);
-
-        // legend
-        // .append("text")
-        // .attr("dy", -5)
-        // .attr("font-size", 14)
-        // .attr("text-decoration", "underline")
-        // .text("Click on category to select/deselect days");
     }
 
     draw();

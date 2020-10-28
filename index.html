@@ -65,41 +65,37 @@
   </div>
 </div>
 <!-- Deaths and Positive Numbers -->
-<div class="row">
+<div class="container">
+  <div class="row">
 
-  <div class="col-4"></div>
+    <div class="col-md-1">
+      <!-- Spacer -->
+    </div>
 
-  <div class="col-2 text-center">
-    <h5 style="color:#910f06">Total Deaths</h5><div id="death_today"></div>
+    <div class="col-md-2 text-center white-text" id="deathBar">
+      <h5 style="color: white">Total Deaths</h5><div id="death_today"></div>
+    </div>
+
+    <div class="col-md-2 text-center white-text" id="posBar">
+      <h5 style="color: white">Total Positive</h5><div class="thin-text" id="positive_today"></div>
+    </div>
+
+    <div class="col-2 text-center white-text" id="hospBar">
+      <h5 style="color: white">In Hospital</h5><div id="hosp_today"></div>
+    </div>
+
+    <div class="col-2 text-center white-text" id="icuBar">
+      <h5 style="color: white">In ICU</h5><div class="thin-text" id="icu_today"></div>
+    </div>
+  
+    <div class="col-2 text-center white-text" id="ventBar">
+      <h5 style="color: white">On Ventilator</h5><div class="thin-text" id="vent_today"></div>
+    </div>
+    
   </div>
-
-  <div class="col-2 text-center">
-    <h5 style="color:#d1870f">Total Positive</h5><div class="thin-text" id="positive_today"></div>
-  </div>
-
-  <div class="col-4"></div>
-
 </div>
 
-<div class="row">
 
-  <div class="col-3"></div>
-
-  <div class="col-2 text-center">
-    <h5 style="color: #002f75">In Hospital</h5><div id="hosp_today"></div>
-  </div>
-
-  <div class="col-2 text-center">
-    <h5 style="color:#13a808">In ICU</h5><div class="thin-text" id="icu_today"></div>
-  </div>
-
-  <div class="col-2 text-center">
-    <h5 style="color:#824ecf">On Ventilator</h5><div class="thin-text" id="vent_today"></div>
-  </div>
-
-  <div class="col-3"></div>
-
-</div>
 <div class="row">
   <div id="usaTotalsChart"></div>
 </div>

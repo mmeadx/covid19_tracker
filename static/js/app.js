@@ -14,6 +14,13 @@ d3.json(url + usaOverall).then((data) => {
     var today  = new Date(data[0].dateChecked);
     var todays_date = today.toLocaleDateString("en-US", options);
 
+    // Format numbers to have commas
+    var death_comma = (data[0].death).toLocaleString('en');
+    var pos_comma = (data[0].positive).toLocaleString('en');
+    var hosp_comma = (data[0].hospitalizedCurrently).toLocaleString('en');
+    var icu_comma = (data[0].inIcuCurrently).toLocaleString('en');
+    var vent_comma = (data[0].onVentilatorCurrently).toLocaleString('en');
+
     // NUMBERS FOR COUNTER AT TOP OF PAGE
 
     var todayhtml = d3.select("#todaysdate")
@@ -22,27 +29,27 @@ d3.json(url + usaOverall).then((data) => {
     var death_today = d3.select("#death_today")
         .append("h6")
         .classed('thin-text', true)   
-        .html(`${data[0].death}`);
+        .html(`${death_comma}`);
 
     var positive_today = d3.select("#positive_today")
         .append("h6")
         .classed('thin-text', true)   
-        .html(`${data[0].positive}`);
+        .html(`${pos_comma}`);
 
     var hosp_today = d3.select("#hosp_today")
         .append("h6")
         .classed('thin-text', true)   
-        .html(`${data[0].hospitalizedCurrently}`);
+        .html(`${hosp_comma}`);
 
     var icu_today = d3.select("#icu_today")
         .append("h6")
         .classed('thin-text', true)   
-        .html(`${data[0].inIcuCurrently}`);
+        .html(`${icu_comma}`);
 
     var vent_today = d3.select("#vent_today")
         .append("h6")
         .classed('thin-text', true)   
-        .html(`${data[0].onVentilatorCurrently}`);
+        .html(`${vent_comma}`);
 });
 
 
@@ -57,14 +64,15 @@ d3.json(url + usaOverall).then((data) => {
 //             function drawChart() {
 //                 var data = google.visualization.arrayToDataTable([
 //                 ['Number Title', 'Totals'],
-//                 ['Total Positive',     (usTotals[0].positive)],
-//                 ['Total Deaths',      (usTotals[0].death)],
-//                 ['Total Hospitalized',    (usTotals[0].hospitalized)]
+//                 ['In Hospital',     (usTotals[0].hospitalizedCurrently)],
+//                 ['In ICU',      (usTotals[0].inIcuCurrently)],
+//                 ['On Ventilator',    (usTotals[0].onVentilatorCurrently)]
 //                 ]);
 
 //                 var options = {
-//                 pieHole: 0.2,
-//                 pieSliceText: 'none'
+//                 pieHole: 0.4,
+//                 pieSliceText: 'none',
+//                 legend: 'bottom'
 //                 };
 
 //                 var chart = new google.visualization.PieChart(document.getElementById('usaTotalsChart'));

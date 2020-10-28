@@ -7,6 +7,43 @@
     text-align: center;
 }
 
+/* IDs */
+
+#deathBar {
+    background-color: #910f06;
+    padding: 5px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+#posBar {
+    background-color: #d1870f;
+    padding: 5px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+#hospBar {
+    background-color: #002f75;
+    padding: 5px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+#icuBar {
+    background-color: #13a808;
+    padding: 5px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+#ventBar {
+    background-color: #824ecf;
+    padding: 5px;
+    border-radius: 20px;
+    border-style: solid;
+}
+
 /* ---------- OVERVIEW ----------*/
 
 /* Classes */
@@ -63,6 +100,10 @@
 
 .thin-text {
     font-weight: lighter;
+}
+
+.white-text {
+    color: white;
 }
 
 .underline {
