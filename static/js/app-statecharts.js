@@ -48,6 +48,19 @@ function buildPlots(info){
             var statePop = parseInt(stateFull[0].population); 
             console.log(`Population ${statePop}`);
             
+            // MOVING AVG CALC? --- code from https://stackoverflow.com/questions/19981713/html5-js-chart-with-moving-average
+            
+            // var moveMean = [];
+
+            // for (i = 0; i < selectedData.length; i++)
+            // {  
+            //     var mean = (selectedData[i].positiveIncrease + selectedData[i-1].positiveIncrease + selectedData[i+1].positiveIncrease)/3.0;
+            //     console.log(mean);
+            //     moveMean.push(mean);
+            // }
+
+            // console.log(moveMean);
+
 
         // ----- BAR CHART -----
      
