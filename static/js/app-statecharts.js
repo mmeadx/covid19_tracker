@@ -39,7 +39,7 @@ function buildPlots(info){
 
 
         // Used to get full name of state + FIPS code
-        d3.csv("../static/csv/states.csv").then((states) => {
+        d3.csv("./static/csv/states.csv").then((states) => {
             var stateFull = states.filter(x => x.state_abbr === info);
 
             // Grab selected Dataset from samples using Subject ID No. from dropdown
@@ -141,7 +141,7 @@ function numbers(dataset) {
 
 
         // CSV of States with Abbr and FIPS
-        d3.csv("../static/csv/states.csv").then((states) => {
+        d3.csv("./static/csv/states.csv").then((states) => {
             var stateFull = states.filter(x => x.state_abbr === dataset)
 
             // console.log(stateFull); // Test to see if Full State Name is given
