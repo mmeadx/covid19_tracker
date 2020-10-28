@@ -25,6 +25,7 @@ function updateAll() {
     // Run these functions every time new dropdown is selected
     buildPlots(dataset);
     numbers(dataset);
+    makePie(dataset);
 
 };
 
@@ -167,24 +168,34 @@ function numbers(dataset) {
 // GOOGLE CHARTS - DONUT GRAPH ---------->
 // https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
 
-google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Total Positive',     11],
-          ['Total Deaths',      2],
-          ['Total Recovered',    7]
-        ]);
+function makePie(dataset) {
+    
+    d3.json("https://api.covidtracking.com/v1/states/daily.json").then((data) => {
 
-        var options = {
-          title: 'COVID NUMBERS',
-          pieHole: 0.4,
-        };
+        var selectedData = data.filter(x => x.state === dataset);
+        
+        google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                ['Number Title', 'Totals'],
+                ['Total Positive',     (selectedData[0].positive)],
+                ['Total Deaths',      (selectedData[0].death)],
+                ['Total Hospitalized',    (selectedData[0].hospitalized)]
+                ]);
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
+                var options = {
+                pieHole: 0.2,
+                pieSliceText: 'none'
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                chart.draw(data, options);
+        }
+
+    });
+    };
+
 
 function init() {
     
