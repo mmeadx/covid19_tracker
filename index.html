@@ -11,6 +11,9 @@
   <!-- D3 Import -->
   <script src="https://d3js.org/d3.v5.min.js"></script>   
 
+  <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
    <!-- Leaflet CSS
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -38,17 +41,15 @@
             Explore
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/templates/USA.html">USA</a>
-            <a class="dropdown-item" href="/templates/bystate.html">By State</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"></a>
+            <a class="dropdown-item" href="templates/USA.html">USA</a>
+            <a class="dropdown-item" href="templates/bystate.html">By State</a>
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/templates/overview.html">Overview</a>
+            <a class="nav-link" href="templates/overview.html">Overview</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/templates/team.html">Team</a>
+          <a class="nav-link" href="templates/team.html">Team</a>
       </li>
     </div>
   </nav>
@@ -99,8 +100,10 @@
   <div class="col-3"></div>
 
 </div>
-
-<div class="container neg-padding">
+<div class="row">
+  <div id="usaTotalsChart"></div>
+</div>
+<div class="container">
   <div class="row">
     <div class="col-12">
       <svg class="svgcal" id="svg"></svg>
@@ -148,20 +151,20 @@
 
 
 <!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+<!-- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
 integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-crossorigin=""></script>
+crossorigin=""></script> -->
 
 <!-- API key -->
-<script type="text/javascript" src="/static/js/config.js"></script>
+<script type="text/javascript" src="static/js/config.js"></script>
 
 <!-- JS -->
-<script type="text/javascript" src="/static/js/app.js"></script>
-<script type="text/javascript" src="/static/js/app-cal-death.js"></script>
-<script type="text/javascript" src="/static/js/app-cal-pos.js"></script>
-<script type="text/javascript" src="/static/js/app-cal-hosp.js"></script>
-<script type="text/javascript" src="/static/js/app-cal-icu.js"></script>
-<script type="text/javascript" src="/static/js/app-cal-vent.js"></script>
+<script type="text/javascript" src="static/js/app.js"></script>
+<script type="text/javascript" src="static/js/app-cal-death.js"></script>
+<script type="text/javascript" src="static/js/app-cal-pos.js"></script>
+<script type="text/javascript" src="static/js/app-cal-hosp.js"></script>
+<script type="text/javascript" src="static/js/app-cal-icu.js"></script>
+<script type="text/javascript" src="static/js/app-cal-vent.js"></script>
 
 </body>
 

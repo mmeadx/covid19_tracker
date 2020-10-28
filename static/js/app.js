@@ -46,6 +46,35 @@ d3.json(url + usaOverall).then((data) => {
 });
 
 
+// FUNCTION FROM GOOGLE CHARTS TO MAKE DONUT PIE CHART
+
+// function makePie() {
+    
+//     d3.json(url + usaOverall).then((usTotals) => {
+        
+//         google.charts.load("current", {packages:["corechart"]});
+//         google.charts.setOnLoadCallback(drawChart);
+//             function drawChart() {
+//                 var data = google.visualization.arrayToDataTable([
+//                 ['Number Title', 'Totals'],
+//                 ['Total Positive',     (usTotals[0].positive)],
+//                 ['Total Deaths',      (usTotals[0].death)],
+//                 ['Total Hospitalized',    (usTotals[0].hospitalized)]
+//                 ]);
+
+//                 var options = {
+//                 pieHole: 0.2,
+//                 pieSliceText: 'none'
+//                 };
+
+//                 var chart = new google.visualization.PieChart(document.getElementById('usaTotalsChart'));
+//                 chart.draw(data, options);
+//         }
+
+//     });
+//     };
+
+//     makePie();
 
 
 
