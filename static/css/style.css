@@ -31,14 +31,14 @@
 }
 
 #icuBar {
-    background-color: #13a808;
+    background-color: #1e7821;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
 }
 
 #ventBar {
-    background-color: #824ecf;
+    background-color: #582e80;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
@@ -114,22 +114,19 @@
     padding: 30px;
 }
 
+
 .body {
     height: 97%;
+  }
+
+svg {
+    height: 150%;
+    width: 97%;
 }
 
-/* COMMENT THIS IN AND OTHER OUT FOR ROTATION - ROTATE */
-.svgcal {
-    padding: 5px;
-    width: 100%;
-    transform: rotate(270deg);    
+.pad {
+    padding:25px;
 }
-
-/* .svgcal {
-    padding: 5px;
-    width: 100%;    
-} */
-
 .center {
     padding: 15px;
 }

@@ -7,17 +7,14 @@
   <title>COVID19</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
   <!-- D3 Import -->
   <script src="https://d3js.org/d3.v5.min.js"></script>   
 
   <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-   <!-- Leaflet CSS
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin="" /> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-color/1.2.1/d3-color.js"></script>
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="./static/css/style.css">
@@ -63,110 +60,57 @@
             <hr>
     </div>
   </div>
-</div>
-<!-- Deaths and Positive Numbers -->
-<div class="container">
-  <div class="row">
+</div>   
 
-    <div class="col-md-1">
-      <!-- Spacer -->
-    </div>
-
-    <div class="col-md-2 text-center white-text" id="deathBar">
-      <h5 style="color: white">Total Deaths</h5><div id="death_today"></div>
-    </div>
-
-    <div class="col-md-2 text-center white-text" id="posBar">
-      <h5 style="color: white">Total Positive</h5><div class="thin-text" id="positive_today"></div>
-    </div>
-
-    <div class="col-2 text-center white-text" id="hospBar">
-      <h5 style="color: white">In Hospital</h5><div id="hosp_today"></div>
-    </div>
-
-    <div class="col-2 text-center white-text" id="icuBar">
-      <h5 style="color: white">In ICU</h5><div class="thin-text" id="icu_today"></div>
-    </div>
-  
-    <div class="col-2 text-center white-text" id="ventBar">
-      <h5 style="color: white">On Ventilator</h5><div class="thin-text" id="vent_today"></div>
-    </div>
-    
-  </div>
+<!-- DEATH CALENDAR -->
+<div class="container pad">
+    <div class="row">
+        <div class="col-md-2 text-center white-text" id="deathBar">
+            <h5 style="color: white">Total Deaths</h5><div id="death_today"></div>
+        </div>
+        <div class="col-md-10"><svg id="svgDeath"></svg></div>
+     </div>  
 </div>
 
-
-<!--  COMMENT IN ROTATE IN CSS -->
-<div class="container">
-  <div class="row">
-
-    <div class="col-1"></div>
-
-    <div class="col-2">
-      <svg class="svgcal" id="svg"></svg>
-    </div>
-
-    <div class="col-2">
-      <svg class="svgcal" id="svg-pos"></svg>
-    </div>
-
-    <div class="col-2">
-      <svg class="svgcal" id="svg-hosp"></svg>
-    </div>
-
-    <div class="col-2">
-      <svg class="svgcal" id="svg-icu"></svg>
-    </div>
-
-    <div class="col-2">
-      <svg class="svgcal" id="svg-vent"></svg>
-    </div>
-
-  </div>
+<!-- POSITIVE CALENDAR -->
+<div class="container pad">
+    <div class="row">
+        <div class="col-md-2 text-center white-text" id="posBar">
+            <h5 style="color: white">Total Positive Cases</h5><div id="positive_today"></div>
+        </div>
+        <div class="col-md-10"><svg id="svgPos"></svg></div>
+     </div>  
 </div>
 
-<!-- ------- NON ROTATED ------- -->
-
-<!-- <div class="container"> 
-  <div class="row">
-    <div class="col-12">
-      <svg class="svgcal" id="svg"></svg>
-    </div>
-  </div>
+<!-- HOSPITAL CALENDAR -->
+<div class="container pad">
+    <div class="row">
+        <div class="col-md-2 text-center white-text" id="hospBar">
+            <h5 style="color: white">In Hospital Today</h5><div id="hosp_today"></div>
+        </div>
+        <div class="col-md-10"><svg id="svgHosp"></svg></div>
+     </div>  
 </div>
 
-<div class="container"> 
-  <div class="row">
-    <div class="col-12">
-      <svg class="svgcal" id="svg-pos"></svg>
-    </div>
-  </div>
+<!-- ICU CALENDAR -->
+<div class="container pad">
+    <div class="row">
+        <div class="col-md-2 text-center white-text" id="icuBar">
+            <h5 style="color: white">In ICU Today</h5><div id="icu_today"></div>
+        </div>
+        <div class="col-md-10"><svg id="svgIcu"></svg></div>
+     </div>  
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <svg class="svgcal" id="svg-hosp"></svg>
-    </div>
-  </div>
+<!-- VENT CALENDAR -->
+<div class="container pad">
+    <div class="row">
+        <div class="col-md-2 text-center white-text" id="ventBar">
+            <h5 style="color: white">On Ventilator Today</h5><div id="vent_today"></div>
+        </div>
+        <div class="col-md-10"><svg id="svgVent"></svg></div>
+     </div>  
 </div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <svg class="svgcal" id="svg-icu"></svg>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <svg class="svgcal" id="svg-vent"></svg>
-    </div>
-  </div>
-</div> -->
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -174,19 +118,12 @@
 
 <!-- JS -->
 <script type="text/javascript" src="./static/js/app.js"></script>
-<script type="text/javascript" src="./static/js/app-cal-death.js"></script>
-<script type="text/javascript" src="./static/js/app-cal-pos.js"></script>
-<script type="text/javascript" src="./static/js/app-cal-hosp.js"></script>
-<script type="text/javascript" src="./static/js/app-cal-icu.js"></script>
-<script type="text/javascript" src="./static/js/app-cal-vent.js"></script>
+<script type="text/javascript" src="./static/js/app-deathCal.js"></script>
+<script type="text/javascript" src="./static/js/app-posCal.js"></script>
+<script type="text/javascript" src="./static/js/app-hospCal.js"></script>
+<script type="text/javascript" src="./static/js/app-icuCal.js"></script>
+<script type="text/javascript" src="./static/js/app-ventCal.js"></script>
 
 </body>
 
 </html>
-
-
-<!-- THIS IS A CHART SHOWING HOSPITAL TOTALS -->
-
-<!-- <div class="row">
-  <div id="usaTotalsChart"></div>
-</div> -->
