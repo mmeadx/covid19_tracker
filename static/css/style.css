@@ -118,12 +118,17 @@
     height: 97%;
 }
 
+/* COMMENT THIS IN AND OTHER OUT FOR ROTATION - ROTATE */
 .svgcal {
-    height: 2500;
-    width: 300;
-    width: 98%;
-    
+    padding: 5px;
+    width: 100%;
+    transform: rotate(270deg);    
 }
+
+/* .svgcal {
+    padding: 5px;
+    width: 100%;    
+} */
 
 .center {
     padding: 15px;

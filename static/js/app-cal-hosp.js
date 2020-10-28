@@ -49,7 +49,7 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .join("g")
         .attr(
             "transform",
-            (d, i) => `translate(150, ${yearHeight * i + cellSize * 1.5})`
+            (d, i) => `translate(0, ${yearHeight * i + cellSize * 1.5})`
         );
 
         // year

@@ -14,9 +14,9 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
     }));
 
     const svg = d3.select("#svg");
-    const { width, height } = document
-        .getElementById("svg")
-        .getBoundingClientRect();
+    // const { width, height } = document
+    //     .getElementById("svg")
+    //     .getBoundingClientRect();
 
 
     function draw() {
@@ -49,13 +49,13 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .join("g")
         .attr(
             "transform",
-            (d, i) => `translate(150, ${yearHeight * i + cellSize * 1.5})`
+            (d, i) => `translate(${i}, ${yearHeight * i + cellSize * 1.5})`
         );
 
         year
         .append("text")
-        .attr("x", -5)
-        .attr("y", 10)
+        .attr("x", -45)
+        .attr("y", -70)
         .attr("text-anchor", "end")
         .attr("font-size", 12)
         .attr("font-weight", "lighter")
@@ -71,16 +71,6 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .scaleSequential(d3.interpolateReds )
         .domain([Math.floor(minValue), Math.ceil(maxValue)]);
         const format = d3.format("+.2%");
-
-        // const formatMonth = d =>
-        // ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getUTCMonth()];
-        // const countMonth = d => d.getUTCMonth();
-        // // const timeWeek = d3.utcSunday;
-        // const formatD = d3.utcFormat("%b");
-        // const colorFn = d3
-        // .scaleSequential(d3.interpolateReds )
-        // .domain([Math.floor(minValue), Math.ceil(maxValue)]);
-        // const format = d3.format("+.2%");
 
         year
         .append("g")
@@ -111,15 +101,6 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         .append("title")
         .text(d => `${formatDate(d.date)}: ${d.value.toFixed(2)}`);
 
-
-
-        const legend = group
-        .append("g")
-        .attr(
-            "transform",
-            `translate(10, ${years.length * yearHeight + cellSize * 4})`
-        );
-
         const categoriesCount = 10;
         const categories = [...Array(categoriesCount)].map((_, i) => {
         const upperBound = (maxValue / categoriesCount) * (i + 1);
@@ -133,7 +114,7 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then(function (sample)
         };
         });
 
-        const legendWidth = 60;
+        const legendWidth = 90;
 
         function toggle(legend) {
             const { lowerBound, upperBound, selected } = legend;
