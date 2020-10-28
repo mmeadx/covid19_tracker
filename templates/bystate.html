@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- IMPORT PLOTLY -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 
-<!-- D3 Import -->
-<script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- D3 Import -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 
+  <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="/static/css/style.css">
 
@@ -67,13 +70,17 @@
 <div class="container">
   <div class="row">
     <div class="col-md-1"></div>
-      <div class="col=md-3">
-        <div class="card" style="width: 18rem;">
-          <h1><div id="dataGrade"></div></h1>
-          <div class="card-body">
-            <p class="card-text"><div id="dataQuality"></div></p>
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <h1><div id="dataGrade"></div></h1>
+        <div class="card-body">
+          <p class="card-text"><div id="dataQuality"></div></p>
         </div>
       </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <div id="donutchart"></div>
     </div>
   </div>
 </div>
@@ -90,6 +97,7 @@ crossorigin=""></script>
 <!-- JS -->
 <!-- <script type="text/javascript" src="/static/js/app.js"></script> -->
 <script type="text/javascript" src="/static/js/app-statecharts.js"></script>
+<script type="text/javascript" src="/static/js/app-google-donut.js"></script>
 <!-- <script type="text/javascript" src="/static/js/app-population.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

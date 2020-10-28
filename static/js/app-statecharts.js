@@ -45,6 +45,7 @@ function buildPlots(info){
             var selectedData = meta.filter(x => x.state === info);
             console.log("")
             console.log(`Data for ${info}`);
+            console.log(selectedData);
             var statePop = parseInt(stateFull[0].population); 
             console.log(`Population ${statePop}`);
             
@@ -163,6 +164,27 @@ function numbers(dataset) {
     })
 }
 
+// GOOGLE CHARTS - DONUT GRAPH ---------->
+// https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
+
+google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Total Positive',     11],
+          ['Total Deaths',      2],
+          ['Total Recovered',    7]
+        ]);
+
+        var options = {
+          title: 'COVID NUMBERS',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
 
 function init() {
     

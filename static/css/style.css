@@ -115,5 +115,14 @@
     margin: 5px;
   } */
 
+/* GOOGLE CHARTS */
+#series_chart_div {
+    width: 700px; 
+    height: 400px;
+}
 
+#donutchart {
+    width: 800px;
+    height:350px;
+}
  
