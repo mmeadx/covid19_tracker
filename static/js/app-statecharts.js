@@ -18,17 +18,35 @@ function updateAll() {
     
     // Clear All Data After Click
 
-    var clearTable = d3.select("#dataQuality");
-    clearTable.html("");
+    var cleardataQuality = d3.select("#dataQuality");
+    cleardataQuality.html("");
 
-    var clearGrade = d3.select("#dataGrade");
-    clearGrade.html("");
+    var cleardataGrade = d3.select("#dataGrade");
+    cleardataGrade.html("");
 
-    var clearTable = d3.select("#pctInfected");
-    clearTable.html("");
+    var clearPctInfected = d3.select("#pctInfected");
+    clearPctInfected.html("");
     
-    var clearGrade = d3.select("#pctInfectedState");
-    clearGrade.html("");
+    var clearPctInfectedState = d3.select("#pctInfectedState");
+    clearPctInfectedState.html("");
+
+    var clearStateAccount = d3.select("#stateAccount");
+    clearStateAccount.html("");
+
+    var clearTotalPct = d3.select("#totalPct");
+    clearTotalPct.html("");
+
+    var clearPctDeathToday = d3.select("#pctDeathToday");
+    clearPctDeathToday.html("");
+
+    var clearPctDeathState = d3.select("#pctDeathState");
+    clearPctDeathState.html("");
+
+    var clearStateAccountDead = d3.select("#stateAccountDead");
+    clearStateAccountDead.html("");
+
+    var clearTotalPctDead = d3.select("#totalPctDead");
+    clearTotalPctDead.html("");
 
     // Run these functions every time new dropdown is selected
     buildPlots(dataset);
@@ -55,24 +73,11 @@ function buildPlots(info){
             console.log("")
             console.log(`Data for ${info}`);
             console.log(selectedData);
-            var statePop = parseInt(stateFull[0].population); 
-            console.log(`Population ${statePop}`);
-            
-            // MOVING AVG CALC? --- code from https://stackoverflow.com/questions/19981713/html5-js-chart-with-moving-average
-            
-            // var moveMean = [];
-
-            // for (i = 0; i < selectedData.length; i++)
-            // {  
-            //     var mean = (selectedData[i].positiveIncrease + selectedData[i-1].positiveIncrease + selectedData[i+1].positiveIncrease)/3.0;
-            //     console.log(mean);
-            //     moveMean.push(mean);
-            // }
-
-            // console.log(moveMean);
+            // var statePop = parseInt(stateFull[0].population); 
+            // console.log(`Population ${statePop}`);
 
 
-        // ----- BAR CHART -----
+        // ----- LINE GRAPH -----
      
             var pos_line = {
                 x: selectedData.map(x => x.dateChecked),
@@ -133,6 +138,12 @@ function buildPlots(info){
                     r: 100,
                     t: 100,
                     b: 100
+                },
+                legend: {
+                    "orientation": "h",
+                    x: 0.2,
+                    xanchor: 'left',
+                    y: -0.1
                 }
             };
 
@@ -140,6 +151,8 @@ function buildPlots(info){
         });
     });
 };
+
+// FUNCTION TO GIVE US NUMBERS
 
 function numbers(dataset) {
     console.log("");
@@ -156,71 +169,87 @@ function numbers(dataset) {
         
             var selectedData = data.filter(x => x.state === dataset);
 
-            // Calculate Percent Infected
-            var statePop = parseInt(stateFull[0].population);
-            var totalInfected = selectedData[0].positive;
-            var pctInfectedToday = (((totalInfected/statePop) * 100).toFixed(2))
-            console.log(pctInfectedToday);
+            // Import US Totals
+            d3.json("https://api.covidtracking.com/v1/us/daily.json").then((usTotals) => {
 
-            var quality = d3.select("#dataQuality")
-                .append("h6")
-                .classed("text-center", true)
-                .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
-            
-            var dataGrade = d3.select("#dataGrade")
-                .append("h1")
-                .classed("text-center grade", true)
-                .html(`${selectedData[0].dataQualityGrade}`);
-            
-            var pctInfected = d3.select("#pctInfected")
-                .append("h1")
-                .classed("text-center infected", true)
-                .html(`${pctInfectedToday}%`);
-            
-            var pctInfectedState = d3.select("#pctInfectedState")
-                .append("h6")
-                .classed("text-center", true)
-                .html(`${stateFull[0].state} <br> POPULATION INFECTED`);
+                // Calculate Percent Infected and Dead...
+                var statePop = parseInt(stateFull[0].population);
+                var totalInfected = selectedData[0].positive;
+                var totalUsInfected = usTotals[0].positive;
+                var totalDeath = selectedData[0].death;
+                var totalUsDeath = usTotals[0].death;
 
-                // selectedData[0].dataQualityGrade
+                // ... in state
+                var pctInfectedToday = (((totalInfected/statePop) * 100).toFixed(2))
+                var pctDeathToday = (((totalDeath/statePop) * 100).toFixed(2))
+
+                // ... of US Totals
+                var totalOfUs = (((totalInfected/totalUsInfected) * 100).toFixed(2))
+                var totalUSDeath = (((totalDeath/totalUsDeath) * 100).toFixed(2))
+
+                // DATA QUALITY START
+                var quality = d3.select("#dataQuality")
+                    .append("h6")
+                    .classed("text-center", true)
+                    .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
+                
+                var dataGrade = d3.select("#dataGrade")
+                    .append("h1")
+                    .classed("text-center grade", true)
+                    .html(`${selectedData[0].dataQualityGrade}`);
+                // DATA QUALITY END
+                // STATE INFECTED START
+                var pctInfected = d3.select("#pctInfected")
+                    .append("h1")
+                    .classed("text-center infected", true)
+                    .html(`${pctInfectedToday}%`);
+                
+                var pctInfectedState = d3.select("#pctInfectedState")
+                    .append("h6")
+                    .classed("text-center", true)
+                    .html(`OF ${stateFull[0].state} <br> POPULATION INFECTED`);
+                // STATE INFECTED END
+                // STATE v US INFECTED START
+                var stateAccount = d3.select("#stateAccount")
+                    .append("h6")
+                    .classed("text-center", true)
+                    .html(`${stateFull[0].state} ACCOUNTS FOR`)
+
+                var totalPct = d3.select("#totalPct")
+                    .append("h1")
+                    .classed("text-center", true)
+                    .html(`${totalOfUs}%`)
+                // STATE v US INFECTED END
+                // STATE DEATH START
+                var pctDead = d3.select("#pctDeathToday")
+                    .append("h1")
+                    .classed("text-center infected", true)
+                    .html(`${pctDeathToday}%`);
+                
+                var pctDeadState = d3.select("#pctDeathState")
+                    .append("h6")
+                    .classed("text-center", true)
+                    .html(`OF ${stateFull[0].state} <br> POPULATION DIED FROM COVID-19`);
+                // STATE DEATH END
+                // STATE v US DEATH START
+                var stateAccountDead = d3.select("#stateAccountDead")
+                    .append("h6")
+                    .classed("text-center", true)
+                    .html(`${stateFull[0].state} ACCOUNTS FOR`)
+
+                var totalPctDead = d3.select("#totalPctDead")
+                    .append("h1")
+                    .classed("text-center", true)
+                    .html(`${totalUSDeath}%`)
+                // STATE v US DEATH END
             
-            
+            });
         });
     })
 }
 
-// GOOGLE CHARTS - DONUT GRAPH ---------->
-// https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
-
-// function makePie(dataset) {
     
-//     d3.json("https://api.covidtracking.com/v1/states/daily.json").then((data) => {
-
-//         var selectedData = data.filter(x => x.state === dataset);
-        
-//         google.charts.load("current", {packages:["corechart"]});
-//             google.charts.setOnLoadCallback(drawChart);
-//             function drawChart() {
-//                 var data = google.visualization.arrayToDataTable([
-//                 ['Number Title', 'Totals'],
-//                 ['Total Positive',     (selectedData[0].positive)],
-//                 ['Total Deaths',      (selectedData[0].death)],
-//                 ['Total Hospitalized',    (selectedData[0].hospitalized)]
-//                 ]);
-
-//                 var options = {
-//                 pieHole: 0.2,
-//                 pieSliceText: 'none'
-//                 };
-
-//                 var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-//                 chart.draw(data, options);
-//         }
-
-//     });
-//     };
-
-    
+// SETS UP PAGE WITH STATE DROPDOWN
 
 function init() {
     

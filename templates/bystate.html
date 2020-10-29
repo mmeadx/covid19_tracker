@@ -50,7 +50,6 @@
     </div>
   </nav>
   <div class="row">
-
     <div class="col-md-5"></div>
     <div class="col-md-1 center right less"><h3>State:</h3></div>
     <div class="col-md-1">
@@ -59,9 +58,13 @@
       </div>
     </div>
         <!-- INPUT LINE GRAPH VIA PLOTLY -->
-        <div class="col-12">
-           <div id="covidLine"></div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div id="covidLine"></div>
+      </div>  
+    </div>
+  </div>
 
 </div>
 
@@ -69,15 +72,35 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-1"></div> <!-- SPACER -->
-    <div class="col-md-2">
+    <div class="col-md-2"></div> <!-- SPACER -->
+    
+    <!-- <div class="col-md-2">
       <h1><div id="dataGrade"></div></h1>
       <p><div id="dataQuality"></div></p>
-    </div>
+    </div> -->
+
     <div class="col-md-2">
       <h1><div id="pctInfected"></div></h1>
       <p><div id="pctInfectedState"></div></p>
     </div>
+
+    <div class="col-md-2">
+      <h1><div id="stateAccount"></div></h1>
+      <h1><div id="totalPct"></div></h1>
+      <h6 class="text-center">OF TOTAL U.S. INFECTIONS<h6>
+    </div>
+
+    <div class="col-md-2">
+      <h1><div id="pctDeathToday"></div></h1>
+      <p><div id="pctDeathState"></div></p>
+    </div>
+
+    <div class="col-md-2">
+      <h1><div id="stateAccountDead"></div></h1>
+      <h1><div id="totalPctDead"></div></h1>
+      <h6 class="text-center">OF TOTAL U.S. DEATHS<h6>
+    </div>
+
   </div>
 </div>
 

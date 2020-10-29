@@ -1,11 +1,7 @@
 console.log("Loaded app.js")
 
-const url = "https://api.covidtracking.com";
 
-// Set up variables to take in States
-var usaOverall = "/v1/us/daily.json"
-
-d3.json(url + usaOverall).then((data) => {
+d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
     
     console.log(data);
     
