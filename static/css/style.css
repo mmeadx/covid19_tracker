@@ -8,7 +8,7 @@
 }
 
 /* IDs */
-
+ 
 #deathBar {
     background-color: #910f06;
     padding: 5px;
@@ -143,6 +143,12 @@ svg {
     padding-top: 25px;
 }
 
+.inthemiddle {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
 /* PLACEHOLDER CSS */
 
 .neg-padding {
@@ -151,6 +157,10 @@ svg {
 
 .grade {
     font-size: 70px;
+}
+
+.infected {
+    font-size: 50px;
 }
 
 /* .chart {

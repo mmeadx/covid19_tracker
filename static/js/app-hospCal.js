@@ -98,7 +98,7 @@ console.log("app-hospCal.js running")
             `translate(10, ${years.length * yearHeight + cellSize * 4})`
         );
 
-        const categoriesCount = 10;
+        const categoriesCount = 5;
         const categories = [...Array(categoriesCount)].map((_, i) => {
         const upperBound = (maxValue / categoriesCount) * (i + 1);
         const lowerBound = (maxValue / categoriesCount) * i;
@@ -163,7 +163,7 @@ console.log("app-hospCal.js running")
         legend
         .append("text")
         .attr("dy", -27)
-        .attr("x", 605)
+        .attr("x", 305)
         .attr("font-size", 10)
         .attr("font-weight", "lighter")
         .text("HOSPITALIZED PER DAY");

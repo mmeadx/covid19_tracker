@@ -16,16 +16,24 @@ function updateAll() {
 
     console.log(`State Selected: ${dataset}`); // Will run when new dropdown item is selected
     
-    // Clear Data After Click
+    // Clear All Data After Click
+
     var clearTable = d3.select("#dataQuality");
     clearTable.html("");
+
     var clearGrade = d3.select("#dataGrade");
+    clearGrade.html("");
+
+    var clearTable = d3.select("#pctInfected");
+    clearTable.html("");
+    
+    var clearGrade = d3.select("#pctInfectedState");
     clearGrade.html("");
 
     // Run these functions every time new dropdown is selected
     buildPlots(dataset);
     numbers(dataset);
-    makePie(dataset);
+    // makePie(dataset);
 
 };
 
@@ -116,9 +124,9 @@ function buildPlots(info){
                 }
             };
 
-            var barData = [pos_line, death_line, hosp_line, icu_line, vent_line];
+            var lineData = [pos_line, death_line, hosp_line, icu_line, vent_line];
 
-            var barLayout = {
+            var lineLayout = {
                 title: `COVID 19 Numbers for ${stateFull[0].state}`,
                 margin: {
                     l: 100,
@@ -128,7 +136,7 @@ function buildPlots(info){
                 }
             };
 
-            Plotly.newPlot("bar", barData, barLayout);
+            Plotly.newPlot("covidLine", lineData, lineLayout);
         });
     });
 };
@@ -148,6 +156,12 @@ function numbers(dataset) {
         
             var selectedData = data.filter(x => x.state === dataset);
 
+            // Calculate Percent Infected
+            var statePop = parseInt(stateFull[0].population);
+            var totalInfected = selectedData[0].positive;
+            var pctInfectedToday = (((totalInfected/statePop) * 100).toFixed(2))
+            console.log(pctInfectedToday);
+
             var quality = d3.select("#dataQuality")
                 .append("h6")
                 .classed("text-center", true)
@@ -157,6 +171,16 @@ function numbers(dataset) {
                 .append("h1")
                 .classed("text-center grade", true)
                 .html(`${selectedData[0].dataQualityGrade}`);
+            
+            var pctInfected = d3.select("#pctInfected")
+                .append("h1")
+                .classed("text-center infected", true)
+                .html(`${pctInfectedToday}%`);
+            
+            var pctInfectedState = d3.select("#pctInfectedState")
+                .append("h6")
+                .classed("text-center", true)
+                .html(`${stateFull[0].state} <br> POPULATION INFECTED`);
 
                 // selectedData[0].dataQualityGrade
             
@@ -168,33 +192,33 @@ function numbers(dataset) {
 // GOOGLE CHARTS - DONUT GRAPH ---------->
 // https://developers.google.com/chart/interactive/docs/gallery/piechart#donut
 
-function makePie(dataset) {
+// function makePie(dataset) {
     
-    d3.json("https://api.covidtracking.com/v1/states/daily.json").then((data) => {
+//     d3.json("https://api.covidtracking.com/v1/states/daily.json").then((data) => {
 
-        var selectedData = data.filter(x => x.state === dataset);
+//         var selectedData = data.filter(x => x.state === dataset);
         
-        google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                ['Number Title', 'Totals'],
-                ['Total Positive',     (selectedData[0].positive)],
-                ['Total Deaths',      (selectedData[0].death)],
-                ['Total Hospitalized',    (selectedData[0].hospitalized)]
-                ]);
+//         google.charts.load("current", {packages:["corechart"]});
+//             google.charts.setOnLoadCallback(drawChart);
+//             function drawChart() {
+//                 var data = google.visualization.arrayToDataTable([
+//                 ['Number Title', 'Totals'],
+//                 ['Total Positive',     (selectedData[0].positive)],
+//                 ['Total Deaths',      (selectedData[0].death)],
+//                 ['Total Hospitalized',    (selectedData[0].hospitalized)]
+//                 ]);
 
-                var options = {
-                pieHole: 0.2,
-                pieSliceText: 'none'
-                };
+//                 var options = {
+//                 pieHole: 0.2,
+//                 pieSliceText: 'none'
+//                 };
 
-                var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-                chart.draw(data, options);
-        }
+//                 var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+//                 chart.draw(data, options);
+//         }
 
-    });
-    };
+//     });
+//     };
 
     
 

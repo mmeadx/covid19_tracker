@@ -27,27 +27,27 @@ d3.json(url + usaOverall).then((data) => {
         .html(`${todays_date}`);
 
     var death_today = d3.select("#death_today")
-        .append("h6")
+        .append("h4")
         .classed('thin-text', true)   
         .html(`${death_comma}`);
-
+ 
     var positive_today = d3.select("#positive_today")
-        .append("h6")
+        .append("h4")
         .classed('thin-text', true)   
         .html(`${pos_comma}`);
 
     var hosp_today = d3.select("#hosp_today")
-        .append("h6")
+        .append("h4")
         .classed('thin-text', true)   
         .html(`${hosp_comma}`);
 
     var icu_today = d3.select("#icu_today")
-        .append("h6")
+        .append("h4")
         .classed('thin-text', true)   
         .html(`${icu_comma}`);
 
     var vent_today = d3.select("#vent_today")
-        .append("h6")
+        .append("h4")
         .classed('thin-text', true)   
         .html(`${vent_comma}`);
 });

@@ -67,7 +67,7 @@ console.log("app-deathCal.js running")
         .append("g")
         .attr("text-anchor", "end")
         .selectAll("text")
-        .data(d3.range(7).map(i => new Date(1995, 0, i)))
+        .data(d3.range(7).map(i => new Date(2020, 0, i)))
         .join("text")
         .attr("x", -5)
         .attr("y", d => (countDay(d) + 0.5) * cellSize)
@@ -98,11 +98,13 @@ console.log("app-deathCal.js running")
             `translate(10, ${years.length * yearHeight + cellSize * 4})`
         );
 
-        const categoriesCount = 10;
+        // Controls the legend count of categories
+        const categoriesCount = 5;
         const categories = [...Array(categoriesCount)].map((_, i) => {
         const upperBound = (maxValue / categoriesCount) * (i + 1);
         const lowerBound = (maxValue / categoriesCount) * i;
 
+        // Controls color of legend
         return {
             upperBound,
             lowerBound,
@@ -111,6 +113,7 @@ console.log("app-deathCal.js running")
         };
         });
 
+        // Legend width control
         const legendWidth = 60;
 
         function toggle(legend) {
@@ -158,12 +161,12 @@ console.log("app-deathCal.js running")
         .attr("font-size", 10)
         .text(d => `${d.lowerBound.toFixed(0)} - ${d.upperBound.toFixed(0)}`);
 
-        // TURN THIS ON FOR LEGEND DESCRIPTION
+        // LEGEND DESCRIPTION CONTROL
 
         legend
         .append("text")
         .attr("dy", -27)
-        .attr("x", 605)
+        .attr("x", 305)
         .attr("font-size", 10)
         .attr("font-weight", "lighter")
         .text("DEATHS PER DAY");

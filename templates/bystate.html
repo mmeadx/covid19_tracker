@@ -58,9 +58,9 @@
         <select id="selDataset"></select> <!-- onchange="optionChanged(this.value)" -->
       </div>
     </div>
-
+        <!-- INPUT LINE GRAPH VIA PLOTLY -->
         <div class="col-12">
-           <div id="bar"></div>
+           <div id="covidLine"></div>
         </div>
 
 </div>
@@ -68,18 +68,20 @@
 <div class="container">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-3">
-      <div class="card" style="width: 18rem;">
+    <div class="col-md-2">
+      <div class="card" style="width: 10rem;">
         <h1><div id="dataGrade"></div></h1>
-        <!-- <div class="card-body"> -->
           <p class="card-text"><div id="dataQuality"></div></p>
-        <!-- </div> -->
       </div>
     </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-4">
-      <div id="donutchart"></div>
+
+    <div class="col-md-2">
+      <div class="card" style="width: 10rem;">
+        <h1><div id="pctInfected"></div></h1>
+          <p class="card-text"><div id="pctInfectedState"></div></p>
+      </div>
     </div>
+
   </div>
 </div>
 
