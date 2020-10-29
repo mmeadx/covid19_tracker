@@ -141,13 +141,14 @@ function buildPlots(info){
                 },
                 legend: {
                     "orientation": "h",
-                    x: 0.2,
-                    xanchor: 'left',
-                    y: -0.1
+                    x: "center",
+                    y: "center"
                 }
-            };
+            }
 
-            Plotly.newPlot("covidLine", lineData, lineLayout);
+            var config = {responsive: true};
+
+            Plotly.newPlot("covidLine", lineData, lineLayout, config);
         });
     });
 };
@@ -188,15 +189,15 @@ function numbers(dataset) {
                 var totalUSDeath = (((totalDeath/totalUsDeath) * 100).toFixed(2))
 
                 // DATA QUALITY START
-                var quality = d3.select("#dataQuality")
-                    .append("h6")
-                    .classed("text-center", true)
-                    .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
+                // var quality = d3.select("#dataQuality")
+                //     .append("h6")
+                //     .classed("text-center", true)
+                //     .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
                 
-                var dataGrade = d3.select("#dataGrade")
-                    .append("h1")
-                    .classed("text-center grade", true)
-                    .html(`${selectedData[0].dataQualityGrade}`);
+                // var dataGrade = d3.select("#dataGrade")
+                //     .append("h1")
+                //     .classed("text-center grade", true)
+                //     .html(`${selectedData[0].dataQualityGrade}`);
                 // DATA QUALITY END
                 // STATE INFECTED START
                 var pctInfected = d3.select("#pctInfected")
@@ -207,13 +208,13 @@ function numbers(dataset) {
                 var pctInfectedState = d3.select("#pctInfectedState")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`OF ${stateFull[0].state} <br> POPULATION INFECTED`);
+                    .html(`of ${stateFull[0].state}'s <br> population has been infected`);
                 // STATE INFECTED END
                 // STATE v US INFECTED START
                 var stateAccount = d3.select("#stateAccount")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`${stateFull[0].state} ACCOUNTS FOR`)
+                    .html(`${stateFull[0].state} accounts for`)
 
                 var totalPct = d3.select("#totalPct")
                     .append("h1")
@@ -229,13 +230,13 @@ function numbers(dataset) {
                 var pctDeadState = d3.select("#pctDeathState")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`OF ${stateFull[0].state} <br> POPULATION DIED FROM COVID-19`);
+                    .html(`of ${stateFull[0].state}'s population <br> (${totalDeath} people) <br> have died from COVID-19`);
                 // STATE DEATH END
                 // STATE v US DEATH START
                 var stateAccountDead = d3.select("#stateAccountDead")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`${stateFull[0].state} ACCOUNTS FOR`)
+                    .html(`${stateFull[0].state} accounts for`)
 
                 var totalPctDead = d3.select("#totalPctDead")
                     .append("h1")
