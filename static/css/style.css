@@ -10,49 +10,49 @@
 /* IDs */
  
 #deathBar {
-    background-color: #910f06;
+    background-color: #b91922;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
 }
 
 #posBar {
-    background-color: #d1870f;
+    background-color: #ec792b;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
 }
 
 .infected-box {
-    background-color: #d1870f;
+    background-color: #ec792b;
     border-style: solid;
     border-color: white;
     border-radius: 30px;
 }
 
 .death-box {
-    background-color: #910f06;
+    background-color: #b91922;
     border-style: solid;
     border-color: white;
     border-radius: 30px;
 }
 
 #hospBar {
-    background-color: #002f75;
+    background-color: #0b326a;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
 }
 
 #icuBar {
-    background-color: #1e7821;
+    background-color: #074e3d;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;
 }
 
 #ventBar {
-    background-color: #582e80;
+    background-color: #4c054a;
     padding: 5px;
     border-radius: 20px;
     border-style: solid;

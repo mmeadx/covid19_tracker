@@ -59,7 +59,7 @@ console.log("app-icuCal.js running")
         const timeWeek = d3.utcSunday;
         const formatDate = d3.utcFormat("%x");
         const colorFn = d3
-        .scaleSequential(d3.interpolateYlGn)
+        .scaleSequential(d3.interpolatePuBuGn)
         .domain([Math.floor(minValue), Math.ceil(maxValue)]);
         const format = d3.format("+.2%");
 
@@ -106,7 +106,7 @@ console.log("app-icuCal.js running")
         return {
             upperBound,
             lowerBound,
-            color: d3.interpolateYlGn(upperBound / maxValue),
+            color: d3.interpolatePuBuGn(upperBound / maxValue),
             selected: true
         };
         });
@@ -131,7 +131,7 @@ console.log("app-icuCal.js running")
             .data(d => d.values, d => d.date)
             .transition()
             .duration(300)
-            .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
+            .attr("fill", d => (legend.selected ? colorFn(d.value) : "#fff7fb"));
         }
 
         legend

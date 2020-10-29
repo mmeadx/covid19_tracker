@@ -85,7 +85,7 @@ function buildPlots(info){
                 name: "Daily Positive Cases",
                 type: "line",
                 marker: {
-                    color: "#FFA85C"
+                    color: "#ec792b"
                 }
             };
 
@@ -95,7 +95,7 @@ function buildPlots(info){
                 name: "Death",
                 type: "line",
                 marker: {
-                    color: "#d93b0f"
+                    color: "#b91922"
                 }
             };
 
@@ -105,7 +105,7 @@ function buildPlots(info){
                 name: "Hospitalized",
                 type: "line",
                 marker: {
-                    color: "#002f75"
+                    color: "#0b326a"
                 }
             };
 
@@ -115,7 +115,7 @@ function buildPlots(info){
                 name: "In ICU",
                 type: "line",
                 marker: {
-                    color: "#13a808"
+                    color: "#074e3d"
                 }
             };
 
@@ -125,7 +125,7 @@ function buildPlots(info){
                 name: "On Ventilator",
                 type: "line",
                 marker: {
-                    color: "#824ecf"
+                    color: "#4c054a"
                 }
             };
 

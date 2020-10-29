@@ -133,8 +133,8 @@ console.log("app-deathCal.js running")
             .selectAll("rect")
             .data(d => d.values, d => d.date)
             .transition()
-            .duration(300)
-            .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
+            .duration(700)
+            .attr("fill", d => (legend.selected ? colorFn(d.value) : "#fff5f1"));
         }
 
         legend

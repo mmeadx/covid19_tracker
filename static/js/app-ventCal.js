@@ -131,7 +131,7 @@ console.log("app-ventCal.js running")
             .data(d => d.values, d => d.date)
             .transition()
             .duration(300)
-            .attr("fill", d => (legend.selected ? colorFn(d.value) : "white"));
+            .attr("fill", d => (legend.selected ? colorFn(d.value) : "#f7fcfd"));
         }
 
         legend
