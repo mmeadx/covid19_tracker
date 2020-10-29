@@ -30,8 +30,8 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((usTotals) => {
             console.log(deathNorm);
 
             var bubble1 = {
-                x: (byStateTotals.map(x => x.positive)),
-                y: (byStateTotals.map(x => x.death)),
+                x: (byStateTotals.map(x => x.death)),
+                y: (byStateTotals.map(x => x.positive)),
                 mode: 'markers',
                 text: byStateTotals.map(x => x.state),
                 marker: {
@@ -43,12 +43,12 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((usTotals) => {
             var data = [bubble1];
 
             var layout = {
-                title: 'COVID-19 Deaths vs. Positive Cases per State',
+                title: 'COVID-19 Positive Cases per State v Deaths',
                 xaxis: {
-                    title: 'Positive Cases',
+                    title: 'Deaths',
                 },
                 yaxis: {
-                    title: 'Deaths'
+                    title: 'Positive Cases'
                 },
                 height: 400,
                 width: 800
