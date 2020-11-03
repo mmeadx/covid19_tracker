@@ -7,9 +7,22 @@
   <title>COVID19</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+  <!-- IMPORT PLOTLY -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+  <!-- D3 Import -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
+  <!-- JS for grabbing all data -->
+  <script type="text/javascript" src="../static/js/dataGrab.js">  </script>
+  
 </head>
 
 <body>
@@ -28,47 +41,65 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="USA.html">USA</a>
-            <a class="dropdown-item" href="bystate.html">By State</a>
+            <a class="dropdown-item" href="#">By State</a>
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Overview</a>
+            <a class="nav-link" href="overview.html">Overview</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="team.html">Team</a>
       </li>
     </div>
   </nav>
+  <div class="row">
 
-  <div class="container">
-    <div class="row">
+    <div class="col-md-5"></div>
+    <div class="col-md-1 center right less"><h3>State:</h3></div>
+    <div class="col-md-1">
+      <div class="well center down">
+        <select id="selDataset"></select> <!-- onchange="optionChanged(this.value)" -->
+      </div>
+    </div>
+
         <div class="col-12">
-          <h3 id="title-resource">Project Overview</h3>
-          <p class="thin-text">COVID-19 is an ongoing pandemic is affecting the world in many different ways. As an excercise, we wanted to take the plethora of data and express it in different ways. <br> The data behind this website is taken from the COVID Tracking Project. </p>
+           <div id="bar"></div>
         </div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <div class="card" style="width: 18rem;">
+        <h1><div id="dataGrade"></div></h1>
+        <!-- <div class="card-body"> -->
+          <p class="card-text"><div id="dataQuality"></div></p>
+        <!-- </div> -->
+      </div>
     </div>
-    <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6">
-            <h3 id="title-resource"><br><br>Resources</h3>
-            <h5 class="list-header">Data</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center"><a href="https://covidtracking.com/data/api" target="_blank">The Covid Tracking Project</a></li>
-              <li class="list-group-item text-center"><a href="https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States_by_population" target="_blank">Wikipedia | Population by State</a></li>
-            </ul>
-            
-            <br><br><br>
-            <h5 class="list-header">Templates</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item text-center"><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></li>
-              <li class="list-group-item text-center"><a href="https://plotly.com/" target="_blank">Plotly</a></li>
-              <li class="list-group-item text-center"><a href="https://blog.risingstack.com/tutorial-d3-js-calendar-heatmap/" target="_blank">Rising Stack | Heatmap Calendar</a></li>
-            </ul>
-        </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
+      <div id="donutchart"></div>
     </div>
+  </div>
 </div>
 
   </div>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
+
+<!-- API key -->
+<script type="text/javascript" src="../static/js/config.js"></script>
+
+<!-- JS -->
+<!-- <script type="text/javascript" src="/static/js/app.js"></script> -->
+<script type="text/javascript" src="../static/js/app-statecharts.js"></script>
+
+<!-- <script type="text/javascript" src="/static/js/app-population.js"></script> -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
