@@ -16,9 +16,9 @@
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
-  <!-- JS for grabbing all data -->\
-  <script type="text/javascript" src="../static/js/app-dataGrab.js"></script>
-
+  <!-- JS for grabbing all data -->
+  <script type="text/javascript" src="../static/js/app-dataGrab.js">  </script>
+  
 </head>
 
 <body>
@@ -49,6 +49,7 @@
     </div>
   </nav>
   <div class="row">
+ 
     <div class="col-md-5"></div>
     <div class="col-md-1 center right less"><h3>State:</h3></div>
     <div class="col-md-1">
@@ -56,53 +57,52 @@
         <select id="selDataset"></select> <!-- onchange="optionChanged(this.value)" -->
       </div>
     </div>
-        <!-- INPUT LINE GRAPH VIA PLOTLY -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div id="covidLine"></div>
-      </div>  
-    </div>
-  </div>
-
-</div>
-
-<!-- STATE SPECIFIC NUMBERS START -->
-
-<div class="container">
-  <div class="row">
-    <div class="col-md-2"></div> <!-- SPACER -->
+       <!-- INPUT LINE GRAPH VIA PLOTLY -->
+       <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="covidLine"></div>
+          </div>  
+        </div>
+      </div>
     
-    <!-- <div class="col-md-2">
-      <h1><div id="dataGrade"></div></h1>
-      <p><div id="dataQuality"></div></p>
-    </div> -->
-
-    <div class="col-md-2 infected-box white-text pad-box">
-      <h1><div id="pctInfected"></div></h1>
-      <p><div id="pctInfectedState"></div></p>
     </div>
-
-    <div class="col-md-2 infected-box white-text pad-box">
-      <h1><div id="stateAccount"></div></h1>
-      <h1><div id="totalPct"></div></h1>
-      <h6 class="text-center">OF TOTAL U.S. INFECTIONS<h6>
+    
+    <!-- STATE SPECIFIC NUMBERS START -->
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2"></div> <!-- SPACER -->
+        
+        <!-- <div class="col-md-2">
+          <h1><div id="dataGrade"></div></h1>
+          <p><div id="dataQuality"></div></p>
+        </div> -->
+    
+        <div class="col-md-2 infected-box white-text pad-box">
+          <h1><div id="pctInfected"></div></h1>
+          <p><div id="pctInfectedState"></div></p>
+        </div>
+    
+        <div class="col-md-2 infected-box white-text pad-box">
+          <h1><div id="stateAccount"></div></h1>
+          <h1><div id="totalPct"></div></h1>
+          <h6 class="text-center">OF TOTAL U.S. INFECTIONS<h6>
+        </div>
+    
+        <div class="col-md-2 death-box white-text pad-box">
+          <h1><div id="pctDeathToday"></div></h1>
+          <p><div id="pctDeathState"></div></p>
+        </div>
+    
+        <div class="col-md-2 death-box white-text pad-box">
+          <h1><div id="stateAccountDead"></div></h1>
+          <h1><div id="totalPctDead"></div></h1>
+          <h6 class="text-center">OF TOTAL U.S. COVID-19 DEATHS<h6>
+        </div>
+    
+      </div>
     </div>
-
-    <div class="col-md-2 death-box white-text pad-box">
-      <h1><div id="pctDeathToday"></div></h1>
-      <p><div id="pctDeathState"></div></p>
-    </div>
-
-    <div class="col-md-2 death-box white-text pad-box">
-      <h1><div id="stateAccountDead"></div></h1>
-      <h1><div id="totalPctDead"></div></h1>
-      <h6 class="text-center">OF TOTAL U.S. COVID-19 DEATHS<h6>
-    </div>
-
-  </div>
-</div>
-
 
 <!-- API key -->
 <script type="text/javascript" src="../static/js/config.js"></script>

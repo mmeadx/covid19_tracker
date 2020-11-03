@@ -4,7 +4,6 @@ function average(arr){
         sum += arr[i];
     return sum / arr.length;
 }
-​
 /**
  * 
  * @param {*} dataSet Assumed to be in correct order
@@ -21,15 +20,14 @@ function rollingAggergate(dataSet, setValueCallback, rollingLength, keyExtractor
     if(dataSetLength === 0) return;
     let previousKey = keyExtractor(dataSet[0]);
     let bufferIndex = 1;
-​
+
     rollingBuffer[0] = valueExtractor(dataSet[0]);
     setValueCallback(aggergator(rollingBuffer, 0), dataSet[0]);
-​
     function incrementBufferIndex(){
         bufferIndex++;
         bufferIndex %= rollingLength;
     }
-​
+
     function jumpGap(gapSize){
         if(gapSize >= rollingLength){
             rollingBuffer.fill(defaultValue);
@@ -41,7 +39,7 @@ function rollingAggergate(dataSet, setValueCallback, rollingLength, keyExtractor
             }
         }
     }
-​
+
     for(let i = 1; i < dataSetLength; i++){
         const currentRow = dataSet[i];
         let currentKey = keyExtractor(currentRow);
@@ -51,18 +49,18 @@ function rollingAggergate(dataSet, setValueCallback, rollingLength, keyExtractor
         incrementBufferIndex();
     }
 }
-​
+
 async function getCovidData(){
-​
+
     // getting the APIs
     const url_covid = 'https://api.covidtracking.com/v1/states/daily.json';
     const url_state_population = 'https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest';
-​
+
     let [covid_data, {data: state_population_data}] = await Promise.all([
         d3.json(url_covid),
         d3.json(url_state_population),
     ]);
-​
+
     function parseDateNumber(date){
         const dayPart = date % 100;
         date = (date / 100) | 0;
@@ -70,22 +68,22 @@ async function getCovidData(){
         const yearPart = (date / 100) | 0;
         return new Date(yearPart, monthPart, dayPart);
     }
-​
+
     covid_data.forEach(x => {
         x.cleanDate = parseDateNumber(x.date);
     });
-​
+
     function getFips(row) { 
         return row['ID State'].slice(-2);
     }
-​
+
     //setup fip to state mapping
     let fipToState = {};
     state_population_data.forEach(state => {
         fipToState[getFips(state)] = state;
         state.covidData = [];
     });
-​
+
     //add state data to covid data and add covid data to state data in order of occurence (earliest first)
     for(let i = covid_data.length - 1; i >= 0; i--){
         const currentRow = covid_data[i];
@@ -93,7 +91,7 @@ async function getCovidData(){
         if(currentState)
             currentState.covidData.push(currentRow);
     }
-​
+
     state_population_data.forEach(x => {
         //postive increase
         rollingAggergate(
@@ -107,7 +105,7 @@ async function getCovidData(){
             0,
             average
         );
-​
+
         //deaths
         rollingAggergate(
             x.covidData,
@@ -121,11 +119,11 @@ async function getCovidData(){
             average
         );
     });
-​
-​
+
+
     state_population_data.forEach(state => {
         state.modifiedIndex0 = state.covidData.findIndex(covid => covid.positiveIncreaseRollingAverage >= 10);
     });
-​
+    
     return state_population_data;
 }

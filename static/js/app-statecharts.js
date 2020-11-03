@@ -55,33 +55,34 @@ function updateAll() {
 
 };
 
+let _covidDataCache = undefined;
 
-function buildPlots(info){
+async function buildPlots(info){
     console.log("")
     console.log(`'buildPlots' function running on ${info}`);
     
 
-    d3.json("https://api.covidtracking.com/v1/states/daily.json").then((meta) => {
+    //const [meta, states] = await d3.json("https://api.covidtracking.com/v1/states/daily.json");
 
 
-        // Used to get full name of state + FIPS code
-        d3.csv("../static/csv/states.csv").then((states) => {
-            var stateFull = states.filter(x => x.state_abbr === info);
-
-            // Grab selected Dataset from samples using Subject ID No. from dropdown
-            var selectedData = meta.filter(x => x.state === info);
+    // Used to get full name of state + FIPS code
+    if(!_covidDataCache)
+        _covidDataCache = await getCovidData();
+    const states = _covidDataCache;
+    var stateFull = states.find(x => x.covidData[0].state === info);
+    // Grab selected Dataset from samples using Subject ID No. from dropdown
             console.log("")
             console.log(`Data for ${info}`);
-            console.log(selectedData);
-            // var statePop = parseInt(stateFull[0].population); 
-            // console.log(`Population ${statePop}`);
+            console.log(stateFull);
+            var statePop = parseInt(stateFull.Population); 
+            console.log(`Population ${statePop}`);
 
 
         // ----- LINE GRAPH -----
      
             var pos_line = {
-                x: selectedData.map(x => x.dateChecked),
-                y: selectedData.map(x => x.positiveIncrease),
+                x: stateFull.covidData.map(x => x.cleanDate),
+                y: stateFull.covidData.map(x => x.positiveIncrease),
                 name: "Daily Positive Cases",
                 type: "line",
                 marker: {
@@ -90,8 +91,8 @@ function buildPlots(info){
             };
 
             var death_line = {
-                x: selectedData.map(x => x.dateChecked),
-                y: selectedData.map(x => x.death),
+                x: stateFull.covidData.map(x => x.cleanDate),
+                y: stateFull.covidData.map(x => x.death),
                 name: "Death",
                 type: "line",
                 marker: {
@@ -100,8 +101,8 @@ function buildPlots(info){
             };
 
             var hosp_line = {
-                x: selectedData.map(x => x.dateChecked),
-                y: selectedData.map(x => x.hospitalizedCurrently),
+                x: stateFull.covidData.map(x => x.cleanDate),
+                y: stateFull.covidData.map(x => x.hospitalizedCurrently),
                 name: "Hospitalized",
                 type: "line",
                 marker: {
@@ -110,8 +111,8 @@ function buildPlots(info){
             };
 
             var icu_line = {
-                x: selectedData.map(x => x.dateChecked),
-                y: selectedData.map(x => x.inIcuCurrently),
+                x: stateFull.covidData.map(x => x.cleanDate),
+                y: stateFull.covidData.map(x => x.inIcuCurrently),
                 name: "In ICU",
                 type: "line",
                 marker: {
@@ -120,8 +121,8 @@ function buildPlots(info){
             };
 
             var vent_line = {
-                x: selectedData.map(x => x.dateChecked),
-                y: selectedData.map(x => x.onVentilatorCurrently),
+                x: stateFull.covidData.map(x => x.cleanDate),
+                y: stateFull.covidData.map(x => x.onVentilatorCurrently),
                 name: "On Ventilator",
                 type: "line",
                 marker: {
@@ -132,7 +133,7 @@ function buildPlots(info){
             var lineData = [pos_line, death_line, hosp_line, icu_line, vent_line];
 
             var lineLayout = {
-                title: `COVID 19 Numbers for ${stateFull[0].state}`,
+                title: `COVID 19 Numbers for ${stateFull.State}`,
                 margin: {
                     l: 100,
                     r: 100,
@@ -149,13 +150,11 @@ function buildPlots(info){
             var config = {responsive: true};
 
             Plotly.newPlot("covidLine", lineData, lineLayout, config);
-        });
-    });
-};
+        };
 
 // FUNCTION TO GIVE US NUMBERS
 
-function numbers(dataset) {
+async function numbers(dataset) {
     console.log("");
     console.log(`Numbers function running on ${dataset}`)
     
