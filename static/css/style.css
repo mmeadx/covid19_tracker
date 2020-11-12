@@ -24,17 +24,11 @@
 }
 
 .infected-box {
-    background-color: #ec792b;
-    border-style: solid;
-    border-color: white;
-    border-radius: 30px;
+    color: #ec792b;
 }
 
 .death-box {
-    background-color: #b91922;
-    border-style: solid;
-    border-color: white;
-    border-radius: 30px;
+    color: #b91922;
 }
 
 #hospBar {
@@ -109,7 +103,7 @@
 /* Classes */
 
 .text-center {
-    text-align: center;
+    text-align: justify;
 }
 
 .thin-text {
