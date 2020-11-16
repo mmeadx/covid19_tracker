@@ -101,9 +101,22 @@
 /* ---------- GENERAL ---------- */
 
 /* Classes */
+.modebar{
+    display: none !important;
+}
+
+.infected {
+    color: #ec792b;
+    font-size: 50px;
+}
+
+.death {
+    color: #b91922;
+    font-size: 50px;
+}
 
 .text-center {
-    text-align: justify;
+    text-align: center;
 }
 
 .thin-text {
@@ -169,10 +182,6 @@ svg {
 
 .grade {
     font-size: 70px;
-}
-
-.infected {
-    font-size: 50px;
 }
 
 /* .chart {

@@ -187,17 +187,6 @@ async function numbers(dataset) {
                 var totalOfUs = (((totalInfected/totalUsInfected) * 100).toFixed(2))
                 var totalUSDeath = (((totalDeath/totalUsDeath) * 100).toFixed(2))
 
-                // DATA QUALITY START
-                // var quality = d3.select("#dataQuality")
-                //     .append("h6")
-                //     .classed("text-center", true)
-                //     .html(`${stateFull[0].state} <br> DATA QUALITY GRADE`);
-                
-                // var dataGrade = d3.select("#dataGrade")
-                //     .append("h1")
-                //     .classed("text-center grade", true)
-                //     .html(`${selectedData[0].dataQualityGrade}`);
-                // DATA QUALITY END
                 // STATE INFECTED START
                 var pctInfected = d3.select("#pctInfected")
                     .append("h1")
@@ -207,39 +196,39 @@ async function numbers(dataset) {
                 var pctInfectedState = d3.select("#pctInfectedState")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`of ${stateFull[0].state}'s <br> population has been infected`);
+                    .html(`${stateFull[0].state} population infected`);
                 // STATE INFECTED END
                 // STATE v US INFECTED START
                 var stateAccount = d3.select("#stateAccount")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`${stateFull[0].state} accounts for`)
+                    .html(`${stateFull[0].state}'s percentage of total US infections`)
 
                 var totalPct = d3.select("#totalPct")
                     .append("h1")
-                    .classed("text-center", true)
+                    .classed("text-center infected", true)
                     .html(`${totalOfUs}%`)
                 // STATE v US INFECTED END
                 // STATE DEATH START
                 var pctDead = d3.select("#pctDeathToday")
                     .append("h1")
-                    .classed("text-center infected", true)
+                    .classed("text-center death", true)
                     .html(`${pctDeathToday}%`);
                 
                 var pctDeadState = d3.select("#pctDeathState")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`of ${stateFull[0].state}'s population <br> (${totalDeath} people) <br> have died from COVID-19`);
+                    .html(`population of ${stateFull[0].state} <br> (${totalDeath} people) <br> dead from COVID-19`);
                 // STATE DEATH END
                 // STATE v US DEATH START
                 var stateAccountDead = d3.select("#stateAccountDead")
                     .append("h6")
                     .classed("text-center", true)
-                    .html(`${stateFull[0].state} accounts for`)
+                    .html(`${stateFull[0].state}'s percentage of total US deaths`)
 
                 var totalPctDead = d3.select("#totalPctDead")
                     .append("h1")
-                    .classed("text-center", true)
+                    .classed("text-center death", true)
                     .html(`${totalUSDeath}%`)
                 // STATE v US DEATH END
             
