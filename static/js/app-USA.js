@@ -15,6 +15,8 @@ async function getCovidData(){
     console.log("FIRST DATA")
     console.log(covid_data)
 
+    
+
 }
 
 getCovidData()
