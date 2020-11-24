@@ -83,7 +83,7 @@ async function buildPlots(info){
             var pos_line = {
                 x: stateFull.covidData.map(x => x.cleanDate),
                 y: stateFull.covidData.map(x => x.positiveIncreaseRollingAverage),
-                name: "Daily Positive Cases (10 day rolling avg)",
+                name: "Positive Cases (10 day rolling avg)",
                 type: "line",
                 marker: {
                     color: "#ec792b"

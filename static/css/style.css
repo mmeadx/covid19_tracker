@@ -119,6 +119,10 @@
     text-align: center;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 .thin-text {
     font-weight: lighter;
 }

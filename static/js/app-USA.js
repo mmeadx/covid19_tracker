@@ -1,5 +1,24 @@
 console.log("app-USA.js loaded");
 
+
+async function getCovidData(){
+
+    // getting the APIs
+    const url_covid = 'https://api.covidtracking.com/v1/us/daily.json';
+    const url_state_population = 'https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest';
+
+    let [covid_data, {data: state_population_data}] = await Promise.all([
+        d3.json(url_covid),
+        d3.json(url_state_population),
+    ]);
+
+    console.log("FIRST DATA")
+    console.log(covid_data)
+
+}
+
+getCovidData()
+
 // US COVID-19 TOTALS
 d3.json("https://api.covidtracking.com/v1/us/daily.json").then((usTotals) => {
     
@@ -10,9 +29,9 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((usTotals) => {
         d3.csv("../static/csv/states.csv").then((statePopData) => {
             
             // TEST FOR DATA
-            console.log(usTotals); 
-            console.log(byStateTotals);
-            console.log(statePopData);
+            // console.log(usTotals); 
+            // console.log(byStateTotals);
+            // console.log(statePopData);
 
             // ---- BUBBLE CHART ---
 
