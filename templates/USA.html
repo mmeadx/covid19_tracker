@@ -48,15 +48,60 @@
       </li>
     </div>
   </nav>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div id="bubble"></div>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h3 class="text-center thin-text"><br>US TOTALS</h3>
   </div>
+</div>
 
+<!-- DEATH CALENDAR -->
+<div class="container pad">
+  <div class="row">
+      <div class="col-md-2 text-center white-text" id="deathBar">
+          <h5 style="color: white"><br>Total Deaths</h5><div id="death_today"></div>
+      </div>
+      <div class="col-md-10"><svg id="svgDeath"></svg></div>
+   </div>  
+</div>
+
+<!-- POSITIVE CALENDAR -->
+<div class="container pad">
+  <div class="row">
+      <div class="col-md-2 text-center white-text" id="posBar">
+          <h5 style="color: white"><br>Total Positive Cases</h5><div id="positive_today"></div>
+      </div>
+      <div class="col-md-10"><svg id="svgPos"></svg></div>
+   </div>  
+</div>
+
+<!-- HOSPITAL CALENDAR -->
+<div class="container pad">
+  <div class="row">
+      <div class="col-md-2 text-center white-text" id="hospBar">
+          <h5 style="color: white"><br>In Hospital Today</h5><div id="hosp_today"></div>
+      </div>
+      <div class="col-md-10"><svg id="svgHosp"></svg></div>
+   </div>  
+</div>
+
+<!-- ICU CALENDAR -->
+<div class="container pad">
+  <div class="row">
+      <div class="col-md-2 text-center white-text" id="icuBar">
+          <h5 style="color: white"><br>In ICU Today</h5><div id="icu_today"></div>
+      </div>
+      <div class="col-md-10"><svg id="svgIcu"></svg></div>
+   </div>  
+</div>
+
+<!-- VENT CALENDAR -->
+<div class="container pad">
+  <div class="row">
+      <div class="col-md-2 text-center white-text" id="ventBar">
+          <h5 style="color: white"><br>On Ventilator Today</h5><div id="vent_today"></div>
+      </div>
+      <div class="col-md-10"><svg id="svgVent"></svg></div>
+   </div>  
 </div>
 
 
@@ -68,8 +113,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- JS -->
-<script type="text/javascript" src="../static/js/app-USA.js"></script>
-
+<script type="text/javascript" src="../static/js/app.js"></script>
+<script type="text/javascript" src="../static/js/app-deathCal.js"></script>
+<script type="text/javascript" src="../static/js/app-posCal.js"></script>
+<script type="text/javascript" src="../static/js/app-hospCal.js"></script>
+<script type="text/javascript" src="../static/js/app-icuCal.js"></script>
+<script type="text/javascript" src="../static/js/app-ventCal.js"></script>
 </body>
 
 </html>
