@@ -81,7 +81,7 @@ async function buildPlots(info){
         // ----- LINE GRAPH -----
      
             var pos_line = {
-                x: stateFull.covidData.map(x => x.cleanDate),
+                x: stateFull.covidData.map(x => x.dateChecked),
                 y: stateFull.covidData.map(x => x.positiveIncreaseRollingAverage),
                 name: "Positive Cases (10 day rolling avg)",
                 type: "line",
@@ -91,7 +91,7 @@ async function buildPlots(info){
             };
 
             var death_line = {
-                x: stateFull.covidData.map(x => x.cleanDate),
+                x: stateFull.covidData.map(x => x.dateChecked),
                 y: stateFull.covidData.map(x => x.death),
                 name: "Death",
                 type: "line",
@@ -101,7 +101,7 @@ async function buildPlots(info){
             };
 
             var hosp_line = {
-                x: stateFull.covidData.map(x => x.cleanDate),
+                x: stateFull.covidData.map(x => x.dateChecked),
                 y: stateFull.covidData.map(x => x.hospitalizedCurrently),
                 name: "Hospitalized",
                 type: "line",
@@ -111,7 +111,7 @@ async function buildPlots(info){
             };
 
             var icu_line = {
-                x: stateFull.covidData.map(x => x.cleanDate),
+                x: stateFull.covidData.map(x => x.dateChecked),
                 y: stateFull.covidData.map(x => x.inIcuCurrently),
                 name: "In ICU",
                 type: "line",
@@ -121,7 +121,7 @@ async function buildPlots(info){
             };
 
             var vent_line = {
-                x: stateFull.covidData.map(x => x.cleanDate),
+                x: stateFull.covidData.map(x => x.dateChecked),
                 y: stateFull.covidData.map(x => x.onVentilatorCurrently),
                 name: "On Ventilator",
                 type: "line",
