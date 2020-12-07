@@ -52,6 +52,8 @@ function rollingAggergate(dataSet, setValueCallback, rollingLength, keyExtractor
 
 async function getCovidData(){
 
+    console.log("Loaded app-dataGrab.js")
+
     // getting the APIs
     const url_covid = 'https://api.covidtracking.com/v1/states/daily.json';
     const url_state_population = 'https://datausa.io/api/data?drilldowns=State&measures=Population&year=latest';
