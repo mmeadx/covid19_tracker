@@ -2,9 +2,9 @@
 
 **Team Members**
 
-_Matt Mead_
+[_Matt Mead_](https://www.linkedin.com/in/mattmeadmpls/)
 
-_Emilio Bello_
+[_Emilio Bello_](https://www.linkedin.com/in/emilio-bello-09938760/)
 
 **Intent**
 
