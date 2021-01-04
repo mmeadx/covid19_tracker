@@ -48,8 +48,11 @@ async function updateMap(option) {
         console.log("Running map on option:", option);
 
         const globalData = await globalDataPromise;
-        // console.log(globalData);
+        
+        console.log(globalData);
 
+        var death = globalData.map(x => x.covidData.map(x => x.death));
+        console.log(death);
         // function chooseFill(state) {
         //     var color = "black";
         //     for (var x = 0; x < globalData.length; x++) {
