@@ -5,28 +5,31 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="./static/images/covid.gif">
   <title>COVID19</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- D3 Import -->
-  <script src="https://d3js.org/d3.v5.min.js"></script>   
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 
- <!-- Leaflet CSS -->
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
- integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
- crossorigin=""/>
+  <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-color/1.2.1/d3-color.js"></script>
 
   <!-- Our CSS -->
   <link rel="stylesheet" type="text/css" href="./static/css/style.css">
-
-  <!-- JS for grabbing all data -->
-  <script type="text/javascript" src="../static/js/app-dataGrab.js">  </script>
 
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <!-- <a class="navbar-brand" href="index.html">COVID-19</a> -->
-    <a href="#"><img src="./static/images/covid19.gif" width="100" height="29" class="d-inline-block align-top" alt="">    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></a>    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a href="#"><img src="./static/images/covid19.gif" width="100" height="29" class="d-inline-block align-top" alt="">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></a> <button
+      class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -36,7 +39,8 @@
           <a class="nav-link" id="left-padding" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             Explore
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,61 +49,62 @@
           </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="./templates/overview.html">Overview</a>
+          <a class="nav-link" href="./templates/overview.html">Overview</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./templates/team.html">Team</a>
-      </li>
+        </li>
     </div>
   </nav>
-  <div class="container">
-    <div class="row">
-
-      <div class="col-md-5"></div>  <!-- Spacer -->
-      
-      <div class="col-md-2">
-        <div class="well centered-img center">
-          <select id="selDataset" class="centered-img"></select>
-      </div>
-
-      <div class="col-md-5"></div>  <!-- Spacer -->
-
-    </div>
-  </div>
-  
-  <!-- MAP -->
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div id="map"></div>
+      <div class="col-12">
+        <h2 class="header-row thin-text">COVID-19 Dashboard</h2>
+        <p class="thin-text text-center">Last Update</p>
+        <div class="text-center thin-text" id="todaysdate"></div>
+        <hr>
       </div>
     </div>
   </div>
 
+  <!-- DEATH Counter -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="deathcount">COVID-19<br>U.S. Deaths</div>
+        <hr width="50%">
+        <div id="deathcounts"></div>
+        <div class="nospace">That's</div>
+        <div id="death_incr"></div>
+        <div class="nospace">more than yesterday</div>
+      </div>
+    </div>
+  </div>
+  <hr width="50%">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a href="./templates/USA.html"><img class="centered-img" src="/static/images/covid.gif" alt="covid gif animation"></a>
+        <h6 style="text-align: center; margin-top: 0;">MORE STATS</h6>
+      </div>
+    </div>
+  </div>
 
 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
+  <!-- JS -->
+  <script type="text/javascript" src="./static/js/app.js"></script>
 
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-crossorigin=""></script>
-
-<!-- API key -->
-<script type="text/javascript" src="/static/js/config.js"></script>
-
-<!-- JS Load -->
-<script type="text/javascript" src="/static/js/app-map.js"></script>
 
 </body>
 

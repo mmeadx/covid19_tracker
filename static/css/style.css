@@ -7,6 +7,24 @@
     text-align: center;
 }
 
+.deathcount {
+    text-align: center;
+    font-size: 4em;
+    padding: 10px;
+}
+
+.death_incr {
+    text-align: center;
+    font-size: 3em;
+    color: #96161d;
+}
+
+.nospace {
+    margin: 0;
+    text-align: center;
+}
+
+
 /* IDs */
  
 #deathBar {
@@ -203,10 +221,7 @@ svg {
 
 .centered-img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;   
-    width: 100%;
-    /* padding: 10px; */
+    margin: 20px auto 0 auto; 
 }
  
 /* ---------- FOR MAP on index.html ----------*/

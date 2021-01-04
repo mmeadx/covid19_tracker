@@ -12,10 +12,12 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
 
     // Format numbers to have commas
     var death_comma = (data[0].death).toLocaleString('en');
+    var death_today = death_comma;
     var pos_comma = (data[0].positive).toLocaleString('en');
     var hosp_comma = (data[0].hospitalizedCurrently).toLocaleString('en');
     var icu_comma = (data[0].inIcuCurrently).toLocaleString('en');
     var vent_comma = (data[0].onVentilatorCurrently).toLocaleString('en');
+    var death_increase = data[0].deathIncrease;
 
     // NUMBERS FOR COUNTER AT TOP OF PAGE
 
@@ -26,6 +28,16 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
         .append("h4")
         .classed('thin-text', true)   
         .html(`${death_comma}`);
+    
+    var deathcount = d3.select("#deathcounts")
+        .append("h1")
+        .classed('deathcount', true)
+        .html(`${death_comma}`);
+
+    var death_incr = d3.select("#death_incr")
+        .append("h3")
+        .classed('death_incr', true)
+        .html(`+ ${death_increase}`);
  
     var positive_today = d3.select("#positive_today")
         .append("h4")
@@ -49,35 +61,6 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
 });
 
 
-// FUNCTION FROM GOOGLE CHARTS TO MAKE DONUT PIE CHART
 
-// function makePie() {
-    
-//     d3.json(url + usaOverall).then((usTotals) => {
-        
-//         google.charts.load("current", {packages:["corechart"]});
-//         google.charts.setOnLoadCallback(drawChart);
-//             function drawChart() {
-//                 var data = google.visualization.arrayToDataTable([
-//                 ['Number Title', 'Totals'],
-//                 ['In Hospital',     (usTotals[0].hospitalizedCurrently)],
-//                 ['In ICU',      (usTotals[0].inIcuCurrently)],
-//                 ['On Ventilator',    (usTotals[0].onVentilatorCurrently)]
-//                 ]);
-
-//                 var options = {
-//                 pieHole: 0.4,
-//                 pieSliceText: 'none',
-//                 legend: 'bottom'
-//                 };
-
-//                 var chart = new google.visualization.PieChart(document.getElementById('usaTotalsChart'));
-//                 chart.draw(data, options);
-//         }
-
-//     });
-//     };
-
-//     makePie();
 
 
