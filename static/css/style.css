@@ -9,14 +9,22 @@
 
 .deathcount {
     text-align: center;
-    font-size: 4em;
-    padding: 10px;
+    font-size: 2em;
+    margin: 15 auto 15 auto;
 }
 
 .death_incr {
     text-align: center;
-    font-size: 3em;
+    font-size: 1em;
     color: #96161d;
+    margin: 0 auto 0 auto;
+}
+
+.newPos {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    margin: 0 auto 0 auto;
 }
 
 .nospace {
@@ -119,6 +127,51 @@
 /* ---------- GENERAL ---------- */
 
 /* Classes */
+.death-box-front {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #96161d;
+    display: block;
+}
+
+.pos-box-front {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #ec792b;
+    display: block;
+}
+
+.hosp-box-front {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #190eb3;
+    display: block;
+}
+
+.icu-box-front {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #1a4928;
+    display: block;
+}
+
+.white-pad {
+    color: white;
+}
+
+.fix {
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.top-margin {
+    margin-top: 20px;
+}
 .modebar{
     display: none !important;
 }

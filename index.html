@@ -71,26 +71,47 @@
   <!-- DEATH Counter -->
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <div class="deathcount">COVID-19<br>U.S. Deaths</div>
-        <hr width="50%">
-        <div id="deathcounts"></div>
-        <div class="nospace">That's</div>
-        <div id="death_incr"></div>
-        <div class="nospace">more than yesterday</div>
+      <div class="col-md-3">
+        <div class="death-box-front">
+          <div class="text-center white-pad">Total Deaths</div>
+          <div id="deathcounts" class="white-pad"></div>
+        </div>
+        <!-- <div id="death_incr"></div> -->
+      </div>
+
+      <div class="col-md-3">
+        <div class="pos-box-front">
+          <div class="text-center white-pad">New Positive Cases</div>
+          <div class="white-pad" id="newPos"></div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="hosp-box-front">
+          <div class="text-center white-pad">Currently Hospitalized</div>
+          <div class="white-pad" id="hospCur"></div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="icu-box-front">
+          <div class="text-center white-pad">In ICU Currently</div>
+          <div class="white-pad fix" id="icu_today"></div>
+        </div>
       </div>
     </div>
   </div>
-  <hr width="50%">
+  
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <a href="./templates/USA.html"><img class="centered-img" src="./static/images/covid.gif" alt="covid gif animation"></a>
-        <h6 style="text-align: center; margin-top: 0;">MORE STATS</h6>
+      <div class="col-md-3">
+        <div id="death_incr"></div>
       </div>
     </div>
   </div>
 
+
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

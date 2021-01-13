@@ -15,9 +15,11 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
     var death_today = death_comma;
     var pos_comma = (data[0].positive).toLocaleString('en');
     var hosp_comma = (data[0].hospitalizedCurrently).toLocaleString('en');
+    var hosp_cur = (data[0].hospitalizedCurrently).toLocaleString('en');
     var icu_comma = (data[0].inIcuCurrently).toLocaleString('en');
     var vent_comma = (data[0].onVentilatorCurrently).toLocaleString('en');
     var death_increase = data[0].deathIncrease;
+    var new_pos = (data[0].positiveIncrease).toLocaleString('en');
 
     // NUMBERS FOR COUNTER AT TOP OF PAGE
 
@@ -35,7 +37,7 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
         .html(`${death_comma}`);
 
     var death_incr = d3.select("#death_incr")
-        .append("h3")
+        .append("h6")
         .classed('death_incr', true)
         .html(`+ ${death_increase}`);
  
@@ -44,10 +46,20 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
         .classed('thin-text', true)   
         .html(`${pos_comma}`);
 
+    var newPositive = d3.select("#newPos")
+        .append("h1")
+        .classed('newPos', true)
+        .html(`${new_pos}`)
+
     var hosp_today = d3.select("#hosp_today")
         .append("h4")
         .classed('thin-text', true)   
         .html(`${hosp_comma}`);
+    
+    var hosp_currently = d3.select("#hospCur")
+        .append("h1")
+        .classed('newPos', true)   
+        .html(`${hosp_cur}`); 
 
     var icu_today = d3.select("#icu_today")
         .append("h4")
