@@ -11,6 +11,9 @@
   <!-- D3 Import -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
 
+  <!-- IMPORT PLOTLY -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   <!-- GOOGLE CHARTS JAVASCRIPT LOADER -->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -74,9 +77,9 @@
       <div class="col-md-3">
         <div class="death-box-front">
           <div class="text-center white-pad">Total Deaths</div>
-          <div id="deathcounts" class="white-pad"></div>
+          <div class="white-pad" id="deathcounts"></div>
         </div>
-        <!-- <div id="death_incr"></div> -->
+        <div id="death_incr"></div>
       </div>
 
       <div class="col-md-3">
@@ -91,21 +94,23 @@
           <div class="text-center white-pad">Currently Hospitalized</div>
           <div class="white-pad" id="hospCur"></div>
         </div>
+        <div id="hospIncr"></div>
       </div>
 
       <div class="col-md-3">
         <div class="icu-box-front">
           <div class="text-center white-pad">In ICU Currently</div>
-          <div class="white-pad fix" id="icu_today"></div>
+          <div class="white-pad" id="icu_index"></div>
         </div>
       </div>
     </div>
   </div>
-  
+
+  <hr class="top-margin" width="50%">
   <div class="container">
     <div class="row">
-      <div class="col-md-3">
-        <div id="death_incr"></div>
+      <div class="col-md-12">
+        <div id="covidTotals"></div>
       </div>
     </div>
   </div>

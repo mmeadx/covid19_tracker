@@ -20,6 +20,13 @@
     margin: 0 auto 0 auto;
 }
 
+.hosp_incr {
+    text-align: center;
+    font-size: 1em;
+    color: #0b326a;
+    margin: 0 auto 0 auto;
+}
+
 .newPos {
     text-align: center;
     font-size: 2em;
@@ -147,7 +154,7 @@
     height: 100%;
     width: 100%;
     border-radius: 20px;
-    background-color: #190eb3;
+    background-color: #0b326a;
     display: block;
 }
 
@@ -163,14 +170,9 @@
     color: white;
 }
 
-.fix {
-    text-align: center;
-    font-weight: bold;
-    
-}
-
 .top-margin {
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 0px;
 }
 .modebar{
     display: none !important;
