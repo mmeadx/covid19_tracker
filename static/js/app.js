@@ -131,7 +131,8 @@ var lineData = [total_death, total_hosp, total_icu];
 
 var lineLayout = {
     xaxis: {
-        dtick: '120'
+        dtick: '120',
+        showgrid: false
     },
     title: `USA Covid Numbers Over Time`,
     margin: {
@@ -142,8 +143,9 @@ var lineLayout = {
     },
     legend: {
         "orientation": "h",
-        x: "center",
-        y: "center"
+        x: .75,
+        xanchor: 'right',
+        y: 1
     }
 }
 
