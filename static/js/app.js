@@ -23,13 +23,22 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
     var new_pos = (data[0].positiveIncrease).toLocaleString('en');
 
 
-    // if/else statement to determine + or -
-    if (data[0].hospitalizedIncrease > 0) {
-        var hospIncreaseStatus = `+ ${hospIncrease}`
+    // Finding increase or decrease for hospitalizations
+    var hospChange = data[0].hospitalizedCurrently - data[1].hospitalizedCurrently;
+    if (hospChange > 0) {
+        hospChange = `+ ${$hospChange}`;
     }
 
-    else {
-        var hospIncreaseStatus = `- ${hospIncrease}`
+    // Finding change in ICU
+    var icuChange = data[0].inIcuCurrently - data[1].inIcuCurrently;
+    if (icuChange > 0) {
+        icuChange = `+ ${icuChange}`;
+    }
+    
+    // Finding change in new positive cases
+    var posChange = data[0].positiveIncrease - data[1].positiveIncrease;
+    if (posChange > 0) {
+        posChange = `+ ${posChange}`;
     }
 
     // NUMBERS FOR COUNTER AT TOP OF PAGE
@@ -75,7 +84,17 @@ d3.json("https://api.covidtracking.com/v1/us/daily.json").then((data) => {
     var hospIncr = d3.select("#hospIncr")
         .append("h6")
         .classed('hosp_incr', true)
-        .html(hospIncreaseStatus);
+        .html(hospChange);
+    
+    var icuCng = d3.select("#icuChange")
+        .append("h6")
+        .classed('icuChg', true)
+        .html(icuChange);
+
+    var posCng = d3.select("#posChange")
+        .append("h6")
+        .classed('posChg', true)
+        .html(posChange);
 
     var icu_today = d3.select("#icu_today")
         .append("h4")

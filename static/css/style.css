@@ -27,6 +27,20 @@
     margin: 0 auto 0 auto;
 }
 
+.posChg {
+    text-align: center;
+    font-size: 1em;
+    color:#ec792b;
+    margin: 0 auto 0 auto;
+}
+
+.icuChg {
+    text-align: center;
+    font-size: 1em;
+    color:#074e3d;
+    margin: 0 auto 0 auto;
+}
+
 .newPos {
     text-align: center;
     font-size: 2em;
