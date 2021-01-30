@@ -6,6 +6,8 @@
 
 [_Emilio Bello_](https://www.linkedin.com/in/emilio-bello-09938760/)
 
+[_Allan Hunt_](https://www.linkedin.com/in/allanhunt)
+
 **Intent**
 
 _This project aims to use data from [The COVID Tracking Project](https://covidtracking.com/data/api) and display graphics that show the impact of the COVID-19 virus in the United States._
