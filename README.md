@@ -6,7 +6,7 @@
 
 [_Emilio Bello_](https://www.linkedin.com/in/emilio-bello-09938760/)
 
-[_Allan Hunt_](https://www.linkedin.com/in/allanhunt)
+[_Allan Hunt_](https://www.linkedin.com/in/allanrhunt/)
 
 **Intent**
 
